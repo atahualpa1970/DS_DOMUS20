@@ -1,7 +1,7 @@
 # Frontend creado con create-react-app
 #
 # Node.js V16.x
-# Bootstrap 5 (ojo con los cambios sonbre V4)
+# Bootstrap 5 (ojo con los cambios desde V4)
 # 
 
 ### `npm start`
