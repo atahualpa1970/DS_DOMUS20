@@ -45,8 +45,8 @@ export default class Navigation extends Component {
                                     <li><Link className="dropdown-item" to="/app/confirmDate">Confirmar Cita</Link></li>
                                     <li><Link className="dropdown-item" to="/app/editDate">Editar Cita</Link></li>
                                     <li><hr className="dropdown-divider" /></li>
-                                    <li><a className="dropdown-item" href="/app/home">Actividades Diarias</a></li>
-                                    <li><a className="dropdown-item" href="/app/home">Consultas</a></li>
+                                    <li><Link className="dropdown-item" href="/app/home">Actividades Diarias</Link></li>
+                                    <li><Link className="dropdown-item" href="/app/home">Consultas</Link></li>
                                 </ul>
                             </li>
                             <li className="nav-item mx-2">
