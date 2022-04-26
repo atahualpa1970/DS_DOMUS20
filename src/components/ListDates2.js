@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import Navigation from './Navigation'
 import { Form } from 'react-bootstrap';
 
-export default class ListDates extends Component {
-
+export default class ListDates2 extends Component {
+    
     constructor(props) {
         super(props)
         this.state = {
@@ -56,20 +56,7 @@ export default class ListDates extends Component {
             <div>
                 <Navigation />
                 <div className="row fluid mx-1 my-1">
-                    <div className="col-xl-3 col-12" id="box1">
-                        <h1>Solicitudes de citas</h1>
-                        <ul className="list-group">
-                            {
-                                this.state.dates.map((element, index) => (
-                                    <li className="list-group-item list-group-item-action" key={index} value={index}
-                                        onClick={this.selectClient}>
-                                        {element.lastName + ", " + element.firstname + " (" + element.cellPhone + ")"}
-                                    </li>
-                                ))
-                            }
-                        </ul>
-                    </div>
-                    <div className="col-xl-3 col-12" id="box1">
+                    <div className="col-xl-4 col-12" id="box1">
                         <h1>Confirmar Cita</h1>
                         <form className="row my-2 g-3">
                             <label className="form-label">Solicitud recibida</label>
@@ -133,9 +120,25 @@ export default class ListDates extends Component {
                             <div className="col-6 d-flex justify-content-center">
                                 <button type="submit" className="btn btn-danger">Cancelar</button>
                             </div>
+                            <hr />
                         </form>
+
+                        <div className="my-2 g-3">
+                            <h1>Solicitudes de citas</h1>
+                            <ul className="list-group col-12">
+                                {
+                                    this.state.dates.map((element, index) => (
+                                        <li className="list-group-item list-group-item-action" key={index} value={index}
+                                            onClick={this.selectClient}>
+                                            {element.lastName + ", " + element.firstname + " (" + element.cellPhone + ")"}
+                                        </li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
                     </div>
-                    <div className="col-xl-6 col-12" id="box1">
+
+                    <div className="col-xl-8 col-12" id="box1">
                         <img className="col-xl-12" src="../images/Calendario.png" alt="" />
                     </div>
                 </div>

@@ -7,8 +7,8 @@ import RequestDate from './web/RequestDate'
 
 import LogIn from './components/LogIn'
 import ListDates from './components/ListDates'
-import ConfirmDate from './components/ConfirmDate'
-import EditDate from './components/EditDate'
+import ListDates2 from './components/ListDates2'
+import CalendarDates from './components/CalendarDates'
 
 
 function App() {
@@ -21,9 +21,9 @@ function App() {
                 
                 <Route path="/app/home" element={<ListDates />} />
                 <Route path="/app/listDates" element={<ListDates />} />
-                <Route path="/app/requestDates" element={<RequestDate />} />
-                <Route path="/app/confirmDate" element={<ConfirmDate />} />
-                <Route path="/app/editDate" element={<EditDate />} />
+                <Route path="/app/listDates2" element={<ListDates2 />} />
+                <Route path="/app/calendarDates" element={<CalendarDates />} />
+
             </Routes>
         </BrowserRouter>
     )

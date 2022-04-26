@@ -41,12 +41,9 @@ export default class Navigation extends Component {
                                 <a className="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" href="/app" role="button"
                                     aria-expanded="false">Agenda</a>
                                 <ul className="dropdown-menu">
-                                    <li><Link className="dropdown-item" to="/app/listDates">Solicitudes</Link></li>
-                                    <li><Link className="dropdown-item" to="/app/confirmDate">Confirmar Cita</Link></li>
-                                    <li><Link className="dropdown-item" to="/app/editDate">Editar Cita</Link></li>
-                                    <li><hr className="dropdown-divider" /></li>
-                                    <li><Link className="dropdown-item" href="/app/home">Actividades Diarias</Link></li>
-                                    <li><Link className="dropdown-item" href="/app/home">Consultas</Link></li>
+                                    <li><Link className="dropdown-item" to="/app/listDates">Solicitudes (v1)</Link></li>
+                                    <li><Link className="dropdown-item" to="/app/listDates2">Solicitudes (v2)</Link></li>
+                                    <li><Link className="dropdown-item" to="/app/calendarDates">Calendario</Link></li>
                                 </ul>
                             </li>
                             <li className="nav-item mx-2">

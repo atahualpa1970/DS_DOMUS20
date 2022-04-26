@@ -10,11 +10,11 @@ export default class WebHome extends Component {
                     <h4 className="d-flex justify-content-center">Acceso al sistema</h4>
                     <form className="row my-2 g-3 d-flex justify-content-center" action="/app/home">
                         <div className="col-md-12">
-                            <label for="user" className="form-label">User</label>
+                            <label className="form-label">User</label>
                             <input type="text" className="form-control" id="firstName" />
                         </div>
                         <div className="col-md-12">
-                            <label for="password" className="form-label">Password</label>
+                            <label className="form-label">Password</label>
                             <input type="password" className="form-control" id="lastName" />
                         </div>
                         <div className="col-md-12 d-flex justify-content-center">
