@@ -1,7 +1,7 @@
 [
     {
         "lastName": "Otto",
-        "firstname": "Mark",
+        "firstName": "Mark",
         "cellPhone": "3624-112233",
         "email": "ottomark@gmail.com",
         "codeProp": "D123",
@@ -10,7 +10,7 @@
     },
     {
         "lastName": "Thornton",
-        "firstname": "Jacob",
+        "firstName": "Jacob",
         "cellPhone": "3624-445566",
         "email": "jthotnton@gmail.com",
         "codeProp": "D123",
@@ -19,7 +19,7 @@
     },
     {
         "lastName": "Mullen",
-        "firstname": "Larry",
+        "firstName": "Larry",
         "cellPhone": "3624-778899",
         "email": "larrymullenjr@u2.com",
         "codeProp": "D189",
@@ -28,7 +28,7 @@
     },
     {
         "lastName": "Smith",
-        "firstname": "Robert",
+        "firstName": "Robert",
         "cellPhone": "3624-665570",
         "email": "rsmith@thecure.com",
         "codeProp": "D221",
