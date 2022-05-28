@@ -1,0 +1,62 @@
+[
+    {
+        "idUser": 1,
+        "name": "Alberto Figueras",
+        "secretary": false,
+        "cashier": false,
+        "chiefAdmin": false,
+        "chiefSeller": false,
+        "sysAdmin": true,
+        "seller": false,
+        "marketing": false,
+        "manager": false
+    },
+    {
+        "idUser": 2,
+        "name": "Vicente Canovas",
+        "secretary": false,
+        "cashier": false,
+        "chiefAdmin": false,
+        "chiefSeller": false,
+        "sysAdmin": false,
+        "seller": true,
+        "marketing": false,
+        "manager": false
+    },
+    {
+        "idUser": 3,
+        "name": "Juan Sanchis",
+        "secretary": false,
+        "cashier": false,
+        "chiefAdmin": false,
+        "chiefSeller": false,
+        "sysAdmin": false,
+        "seller": true,
+        "marketing": false,
+        "manager": false
+    },
+    {
+        "idUser": 4,
+        "name": "Victor Zafra",
+        "secretary": false,
+        "cashier": false,
+        "chiefAdmin": false,
+        "chiefSeller": false,
+        "sysAdmin": false,
+        "seller": true,
+        "marketing": false,
+        "manager": false
+    },
+    {
+        "idUser": 5,
+        "name": "Andrea Báez",
+        "secretary": true,
+        "cashier": false,
+        "chiefAdmin": false,
+        "chiefSeller": false,
+        "sysAdmin": false,
+        "seller": false,
+        "marketing": false,
+        "manager": false
+    }
+]

@@ -2,7 +2,7 @@ import React from 'react'
 import NavWeb from '../components/NavWeb'
 import Footer from '../components/Footer'
 
-const realEstates = require("../data/prop.json")
+const realEstates = require("../data/properties.json")
 
 export default function WebHome() {
 

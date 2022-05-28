@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 export default function RequestDate() {
 
     const params = useParams()
-    const realEstates = require("../data/prop.json")
+    const realEstates = require("../data/properties.json")
     var selectedProp = {}
     realEstates.map((prop) => (
         (prop.idProp.toString() === params.idProp) ? selectedProp = prop : null
