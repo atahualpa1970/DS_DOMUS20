@@ -5,8 +5,8 @@ import { Form } from 'react-bootstrap';
 
 export default function ListDates() {
 
-    const dates = require("../data/date.json")
-    const realEstates = require("../data/prop.json")
+    const dates = require("../data/requestDates.json")
+    const realEstates = require("../data/properties.json")
 
     const [selectedClient, setSelectedClient] = useState(dates[0]);
     const [selectedProp, setSelectedProp] = useState(realEstates[0]);
