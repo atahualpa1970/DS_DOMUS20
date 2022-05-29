@@ -54,15 +54,13 @@ export default function Navigation() {
                                 <li><Link className="dropdown-item disabled" to="/app/home">Transacciones</Link></li>
                                 <li><Link className="dropdown-item disabled" to="/app/home">Reportes</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><Link className="dropdown-item disabled" to="/app/customers">Clientes</Link></li>
-                                <li><Link className="dropdown-item disabled" to="/app/debtors">Deudores</Link></li>
+                                <li><Link className="dropdown-item" to="/app/newClient">Nuevo Cliente</Link></li>
+                                <li><Link className="dropdown-item" to="/app/adminClients">Admin Clientes</Link></li>
+                                <li><Link className="dropdown-item disabled" to="/app/debtorClients">Deudores</Link></li>
                             </ul>
                         </li>
                         <li className="nav-item mx-2">
-                            <Link className="btn btn-outline-light" to="/app/home">Usuarios</Link>
-                        </li>
-                        <li className="nav-item mx-2">
-                            <Link className="btn btn-outline-light" to="/app/home">Clientes</Link>
+                            <Link className="btn btn-outline-light disabled" to="/app/home">Usuarios</Link>
                         </li>
                         <li className="nav-item dropdown mx-2">
                             <Link className="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" to="/" role="button"

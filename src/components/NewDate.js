@@ -43,7 +43,7 @@ export default function NewDate() {
                             <Form.Control type="text" name="firstName" placeholder="Nombre" defaultValue="" />
                         </div>
                         <div className="col-md-2">
-                            <button type="submit" className="btn btn-primary">Buscar</button>
+                            <button type="submit" className="btn btn-secondary">Buscar</button>
                         </div>
                     </form>
                     <form className="row my-2 g-3">
@@ -97,7 +97,7 @@ export default function NewDate() {
                                     </select>
                                 </div>
                                 <div className="col-md-2">
-                                    <button type="submit" className="btn btn-primary">Buscar</button>
+                                    <button type="submit" className="btn btn-secondary">Buscar</button>
                                 </div>
                             </form>
                             <div className="my-2 g-3">
@@ -128,10 +128,10 @@ export default function NewDate() {
                             </div>
                         </div>
                         <div className="col-6 d-flex justify-content-center">
-                            <button type="submit" className="btn btn-primary">Confirmar</button>
+                            <button type="submit" className="btn btn-danger">Cancelar</button>
                         </div>
                         <div className="col-6 d-flex justify-content-center">
-                            <button type="submit" className="btn btn-danger">Cancelar</button>
+                            <button type="submit" className="btn btn-primary">Confirmar</button>
                         </div>
                         <hr />
                     </form>

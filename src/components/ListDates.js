@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navigation from './Navigation'
 import Calendar from './Calendar'
-import { Form } from 'react-bootstrap';
+import { Form } from 'react-bootstrap'
 
 export default function ListDates() {
 
@@ -88,10 +88,10 @@ export default function ListDates() {
                             </div>
                         </div>
                         <div className="col-6 d-flex justify-content-center">
-                            <button type="submit" className="btn btn-primary">Confirmar</button>
+                            <button type="submit" className="btn btn-danger">Cancelar</button>
                         </div>
                         <div className="col-6 d-flex justify-content-center">
-                            <button type="submit" className="btn btn-danger">Cancelar</button>
+                            <button type="submit" className="btn btn-primary">Confirmar</button>
                         </div>
                         <hr />
                     </form>

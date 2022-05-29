@@ -5,3 +5,7 @@
 #grad {
     background-image: linear-gradient(rgb(255, 255, 255), rgb(50, 100, 225));
 }
+
+.alignL { text-align: left; }
+.alignC { text-align: center; }
+.alignR { text-align: right; }

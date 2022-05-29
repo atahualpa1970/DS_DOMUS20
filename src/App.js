@@ -10,6 +10,9 @@ import ListDates from './components/ListDates'
 import NewDate from './components/NewDate'
 import CalendarDates from './components/CalendarDates'
 
+import NewClient from './components/NewClient'
+import AdminClients from './components/AminClients'
+
 
 function App() {
     return (
@@ -22,6 +25,9 @@ function App() {
                 <Route path="app/listDates" element={<ListDates />} />
                 <Route path="app/newDate" element={<NewDate />} />
                 <Route path="app/calendarDates" element={<CalendarDates />} />
+
+                <Route path="app/newClient" element={<NewClient />} />
+                <Route path="app/adminClients" element={<AdminClients />} />
 
                 <Route path="*" element={<div>Not Found</div>} />
 

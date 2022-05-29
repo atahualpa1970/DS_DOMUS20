@@ -14,6 +14,8 @@ export default function CalendarDates() {
                 </div>
                 <div className="col-xl-3">
                     <h3>Detalles</h3>
+                    <br />
+                    <h6>No existen citas confirmadas para la fecha seleccionada</h6>
                 </div>
             </div>
         </div>
