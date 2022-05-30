@@ -1,6 +1,6 @@
 import React from 'react'
-import Navigation from './Navigation'
-import Calendar from './Calendar'
+import Navigation from '../Navigation'
+import Calendar from '../Calendar'
 
 export default function CalendarDates() {
 

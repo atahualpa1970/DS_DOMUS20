@@ -34,13 +34,13 @@ export default function NewClientCorp() {
                     </div>
                     <Form.Label className="col-md-3 my-2 alignR">Agente:</Form.Label>
                     <div className="col-md-8">
-                            <select name="seller" className="form-select">
-                                <option defaultValue="">Agente...</option>
-                                <option value="Vendedor 1">Vendedor 1</option>
-                                <option value="Vendedor 2">Vendedor 2</option>
-                                <option value="Vendedor 3">Vendedor 3</option>
-                            </select>
-                        </div>
+                        <select name="seller" className="form-select">
+                            <option defaultValue="">Agente...</option>
+                            <option value="Vendedor 1">Vendedor 1</option>
+                            <option value="Vendedor 2">Vendedor 2</option>
+                            <option value="Vendedor 3">Vendedor 3</option>
+                        </select>
+                    </div>
                 </div>
                 <div className="col-md-6">
                     <div class="card">

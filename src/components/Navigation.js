@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 export default function Navigation() {
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-            <div className="container">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary px-3">
                 <Link className="navbar-brand" to="/app/home">
                     <img src="../domus20-1.png" alt="" width="100" height="50" />
                 </Link>
+                <h2 className="navTitle">Inmobiliaria Domus</h2>
                 <button className="navbar-toggler" type="button"
                     data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -21,8 +21,8 @@ export default function Navigation() {
                                 aria-expanded="false">Propiedades</Link>
                             <ul className="dropdown-menu">
                                 <li><Link className="dropdown-item disabled" to="/app/home">Listado</Link></li>
-                                <li><Link className="dropdown-item disabled" to="/app/home">Agregar</Link></li>
-                                <li><Link className="dropdown-item disabled" to="/app/home">Editar</Link></li>
+                                <li><Link className="dropdown-item" to="/app/newProp">Agregar</Link></li>
+                                <li><Link className="dropdown-item" to="/app/adminProps">Editar</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li><Link className="dropdown-item disabled" to="/app/listDates">Reportes</Link></li>
                             </ul>
@@ -71,7 +71,6 @@ export default function Navigation() {
                         </li>
                     </ul>
                 </div>
-            </div>
         </nav>
     )
 }

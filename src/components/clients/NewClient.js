@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Navigation from './Navigation'
+import Navigation from '../Navigation'
 import NewClientPart from './NewClientPart'
 import NewClientCorp from './NewClientCorp'
 
@@ -9,6 +9,13 @@ export default function NewClient() {
 
     const selectClientType = (e) => {
         setSelectedClientType(e.target.value)
+    }
+
+    const renderSwitch = (param) => {
+        switch (selectedClientType) {
+            case "particular": return <NewClientPart />;
+            case "corporativo": return <NewClientCorp />;
+        }
     }
 
     return (
@@ -23,7 +30,7 @@ export default function NewClient() {
                     </select>
                 </div>
 
-                {(selectedClientType === "particular") ? <NewClientPart /> : <NewClientCorp />}
+                { renderSwitch(selectedClientType) }
                 
             </div>
         </div>

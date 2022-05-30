@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import Navigation from './Navigation'
-import Calendar from './Calendar'
+import Navigation from '../Navigation'
+import Calendar from '../Calendar'
 import { Form } from 'react-bootstrap';
 
 export default function NewDate() {
 
-    const dates = require("../data/confirmDates.json")
-    const realEstates = require("../data/properties.json")
+    const dates = require("../../data/confirmDates.json")
+    const realEstates = require("../../data/properties.json")
 
     const [selectedClient, setSelectedClient] = useState(dates[0]);
     const [selectedProp, setSelectedProp] = useState(realEstates[0]);
