@@ -8,7 +8,7 @@ export default function NewProp() {
         <div>
             <Navigation />
             <div className="row fluid col-md-12 mx-0 my-0 py-3" id="box1">
-                <h3>Nuevo Propiedad</h3>
+                <h3>Nueva Propiedad</h3>
                 <hr className="my-4" />
                 <FormProp />
             </div>

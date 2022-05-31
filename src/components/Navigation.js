@@ -20,9 +20,9 @@ export default function Navigation() {
                             <Link className="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" to="/" role="button"
                                 aria-expanded="false">Propiedades</Link>
                             <ul className="dropdown-menu">
-                                <li><Link className="dropdown-item disabled" to="/app/home">Listado</Link></li>
                                 <li><Link className="dropdown-item" to="/app/newProp">Agregar</Link></li>
                                 <li><Link className="dropdown-item" to="/app/adminProps">Editar</Link></li>
+                                <li><Link className="dropdown-item" to="/app/listProps">Listado</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li><Link className="dropdown-item disabled" to="/app/listDates">Reportes</Link></li>
                             </ul>
@@ -56,7 +56,8 @@ export default function Navigation() {
                                 <li><hr className="dropdown-divider" /></li>
                                 <li><Link className="dropdown-item" to="/app/newClient">Nuevo Cliente</Link></li>
                                 <li><Link className="dropdown-item" to="/app/adminClients">Admin Clientes</Link></li>
-                                <li><Link className="dropdown-item disabled" to="/app/debtorClients">Deudores</Link></li>
+                                <li><Link className="dropdown-item" to="/app/listClients">Lista Clientes</Link></li>
+                                <li><Link className="dropdown-item" to="/app/debtorClients">Lista Deudores</Link></li>
                             </ul>
                         </li>
                         <li className="nav-item mx-2">

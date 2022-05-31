@@ -13,9 +13,12 @@ import CalendarDates from './components/dates/CalendarDates'
 
 import NewClient from './components/clients/NewClient'
 import AdminClients from './components/clients/AdminClients'
+import ListClients from './components/clients/ListClients'
+import DebtorClients from './components/clients/DebtorClients'
 
 import NewProp from './components/props/NewProp'
 import AdminProps from './components/props/AdminProps'
+import ListProps from './components/props/ListProps'
 
 function App() {
     return (
@@ -32,9 +35,12 @@ function App() {
 
                 <Route path="app/newClient" element={<NewClient />} />
                 <Route path="app/adminClients" element={<AdminClients />} />
+                <Route path="app/listClients" element={<ListClients />} />
+                <Route path="app/debtorClients" element={<DebtorClients />} />
 
                 <Route path="app/newProp" element={<NewProp />} />
                 <Route path="app/adminProps" element={<AdminProps />} />
+                <Route path="app/listProps" element={<ListProps />} />
 
                 <Route path="*" element={<div>Not Found</div>} />
 

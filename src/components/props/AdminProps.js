@@ -2,7 +2,7 @@ import React from 'react'
 import Navigation from '../Navigation'
 import FormProp from '../props/FormProp'
 
-export default function NewProp() {
+export default function AdminProp() {
 
     return (
         <div>
