@@ -20,6 +20,12 @@ import NewProp from './components/props/NewProp'
 import AdminProps from './components/props/AdminProps'
 import ListProps from './components/props/ListProps'
 
+import Charges from './components/cash/Charges'
+import ChargesConfirm from './components/cash/ChargesConfirm'
+import InputsOuputs from './components/cash/InputsOutput'
+import CashClosing from './components/cash/CashClosing'
+
+
 function App() {
     return (
         <BrowserRouter>
@@ -41,6 +47,11 @@ function App() {
                 <Route path="app/newProp" element={<NewProp />} />
                 <Route path="app/adminProps" element={<AdminProps />} />
                 <Route path="app/listProps" element={<ListProps />} />
+
+                <Route path="app/charges" element={<Charges />} />
+                <Route path="app/chargesConfirm" element={<ChargesConfirm />} />
+                <Route path="app/inputsOutputs" element={<InputsOuputs />} />
+                <Route path="app/cashClosing" element={<CashClosing />} />
 
                 <Route path="*" element={<div>Not Found</div>} />
 

@@ -31,11 +31,10 @@ export default function Navigation() {
                             <Link className="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" to="/" role="button"
                                 aria-expanded="false">Caja</Link>
                             <ul className="dropdown-menu">
-                                <li><Link className="dropdown-item disabled" to="/app/home">Cobros</Link></li>
-                                <li><Link className="dropdown-item disabled" to="/app/home">Entradas</Link></li>
-                                <li><Link className="dropdown-item disabled" to="/app/home">Salidas</Link></li>
+                                <li><Link className="dropdown-item" to="/app/charges">Cobros</Link></li>
+                                <li><Link className="dropdown-item" to="/app/inputsOutputs">Entradas/Salidas</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
-                                <li><Link className="dropdown-item disabled" to="/app/home">Cierre</Link></li>
+                                <li><Link className="dropdown-item" to="/app/cashClosing">Cierre de caja</Link></li>
                             </ul>
                         </li>
                         <li className="nav-item dropdown mx-2">
