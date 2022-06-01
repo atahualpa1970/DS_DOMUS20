@@ -25,6 +25,7 @@ import ChargesConfirm from './components/cash/ChargesConfirm'
 import InputsOuputs from './components/cash/InputsOutput'
 import CashClosing from './components/cash/CashClosing'
 
+import ListUsers from './components/users/ListUsers'
 
 function App() {
     return (
@@ -52,6 +53,8 @@ function App() {
                 <Route path="app/chargesConfirm" element={<ChargesConfirm />} />
                 <Route path="app/inputsOutputs" element={<InputsOuputs />} />
                 <Route path="app/cashClosing" element={<CashClosing />} />
+
+                <Route path="app/listUsers" element={<ListUsers />} />
 
                 <Route path="*" element={<div>Not Found</div>} />
 

@@ -60,7 +60,7 @@ export default function Navigation() {
                             </ul>
                         </li>
                         <li className="nav-item mx-2">
-                            <Link className="btn btn-outline-light disabled" to="/app/home">Usuarios</Link>
+                            <Link className="btn btn-outline-light" to="/app/listUsers">Usuarios</Link>
                         </li>
                         <li className="nav-item dropdown mx-2">
                             <Link className="btn btn-primary btn-sm dropdown-toggle" data-bs-toggle="dropdown" to="/" role="button"

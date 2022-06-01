@@ -9,7 +9,9 @@
         "sysAdmin": true,
         "seller": false,
         "marketing": false,
-        "manager": false
+        "manager": false,
+        "cellPhone": "362-4567890",
+        "email": "afigueras@domus.com"
     },
     {
         "idUser": 2,
@@ -21,7 +23,9 @@
         "sysAdmin": false,
         "seller": true,
         "marketing": false,
-        "manager": false
+        "manager": false,
+        "cellPhone": "362-4555321",
+        "email": "vcanovas@domus.com"
     },
     {
         "idUser": 3,
@@ -33,7 +37,9 @@
         "sysAdmin": false,
         "seller": true,
         "marketing": false,
-        "manager": false
+        "manager": false,
+        "cellPhone": "362-4111222",
+        "email": "jsanchis@domus.com"
     },
     {
         "idUser": 4,
@@ -45,7 +51,9 @@
         "sysAdmin": false,
         "seller": true,
         "marketing": false,
-        "manager": false
+        "manager": false,
+        "cellPhone": "370-4667788",
+        "email": "vzafra@domus.com"
     },
     {
         "idUser": 5,
@@ -57,6 +65,8 @@
         "sysAdmin": false,
         "seller": false,
         "marketing": false,
-        "manager": false
+        "manager": false,
+        "cellPhone": "362-4000010",
+        "email": "abaez@domus.com"
     }
 ]
