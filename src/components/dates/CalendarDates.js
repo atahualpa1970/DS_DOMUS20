@@ -4,6 +4,7 @@ import Calendar from '../Calendar'
 
 export default function CalendarDates() {
 
+    const dates = require("../../data/confirmDates.json")
 
     return (
         <div>
@@ -15,7 +16,15 @@ export default function CalendarDates() {
                 <div className="col-xl-3">
                     <h3>Detalles</h3>
                     <br />
-                    <h6>No existen citas confirmadas para la fecha seleccionada</h6>
+                    <ul className="list-group col-12">
+                            {
+                                dates.map((element, index) => (
+                                    <li className="list-group-item list-group-item-action" key={index} value={index}>
+                                        {element.lastName + ", " + element.firstName + " (" + element.cellPhone + ")"}
+                                    </li>
+                                ))
+                            }
+                        </ul>
                 </div>
             </div>
         </div>
