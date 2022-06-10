@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function Calendar() {
+export default function Calendar({ currentDay, setCurrentDay }) {
 
     const [selectFullDay, setSelectFullDay] = useState(new Date());
 
@@ -22,8 +22,17 @@ export default function Calendar() {
         return { "month": month, "year": year, "week": week };
     }
 
+    const getCurrentDay = (currentYearMonth, currentDay) => {
+        let currentYear = currentYearMonth.year
+        let currentMonth = currentYearMonth.month +1
+        if (currentMonth < 10) currentMonth = "0" + currentMonth
+        if (currentDay < 10) currentDay = "0" + currentDay
+        return currentYear +"-"+ currentMonth +"-"+ currentDay
+    }
+
     const getToday = () => {
         setSelectFullDay(new Date())
+        setCurrentDay(new Date().toISOString().substring(0,10))
     }
 
     const nextMonth = () => {
@@ -50,8 +59,12 @@ export default function Calendar() {
         setSelectFullDay(temp)
     }
 
+    const selectCurretDay = (e) => {
+        setCurrentDay(e.target.value)
+    }
 
-    const currentDay = new Date()
+
+    const today = new Date()
     const weekDayName = ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"]
     const daysToShow = getWeekDayNumber(selectFullDay)
     const monthName = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
@@ -87,10 +100,20 @@ export default function Calendar() {
                                     weekDayName.map((weekDay, index) => (
                                         <td width="13%" align="center" key={index}>{weekDay}<br />
                                             {
-                                                (daysToShow.week[index] === currentDay.getDate()
-                                                    && selectFullDay.toDateString() === currentDay.toDateString())
-                                                    ? <h4><span className="badge rounded-pill bg-secondary">{daysToShow.week[index]}</span></h4>
-                                                    : <h4>{daysToShow.week[index]}</h4>
+                                                (daysToShow.week[index] === today.getDate()
+                                                    && selectFullDay.toDateString() === today.toDateString())
+                                                    ? <button className="btn rounded-circle btn-primary fw-bold"
+                                                        style={{"width": "45px", "height": "45px"}}
+                                                        onClick={selectCurretDay} 
+                                                        value={getCurrentDay(daysToShow, daysToShow.week[index])}>
+                                                        {daysToShow.week[index]}
+                                                    </button>
+                                                    : <button className="btn rounded-circle btn-outline-secondary fw-bold" 
+                                                        style={{"width": "45px", "height": "45px"}}
+                                                        onClick={selectCurretDay} 
+                                                        value={getCurrentDay(daysToShow, daysToShow.week[index])}>
+                                                        {daysToShow.week[index]}
+                                                    </button>
                                             }
                                         </td>
                                     ))

@@ -10,6 +10,7 @@ export default function NewDate() {
 
     const [selectedClient, setSelectedClient] = useState(dates[0]);
     const [selectedProp, setSelectedProp] = useState(realEstates[0]);
+    const [currentDay, setCurrentDay] = useState(new Date().toISOString().substring(0,10));
 
     useEffect(() => {
         realEstates.map((element) => (
@@ -138,7 +139,7 @@ export default function NewDate() {
                 </div>
 
                 <div className="col-xl-9 col-12" id="box1">
-                    <Calendar />
+                    <Calendar currentDay={currentDay} setCurrentDay={setCurrentDay}/>
                 </div>
             </div>
         </div>
