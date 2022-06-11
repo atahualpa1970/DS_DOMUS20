@@ -25,7 +25,8 @@
         "marketing": false,
         "manager": false,
         "cellPhone": "362-4555321",
-        "email": "vcanovas@domus.com"
+        "email": "vcanovas@domus.com",
+        "color": "#FFF7AE"
     },
     {
         "idUser": 3,
@@ -39,7 +40,8 @@
         "marketing": false,
         "manager": false,
         "cellPhone": "362-4111222",
-        "email": "jsanchis@domus.com"
+        "email": "jsanchis@domus.com",
+        "color": "#9EDED8"
     },
     {
         "idUser": 4,
@@ -53,7 +55,8 @@
         "marketing": false,
         "manager": false,
         "cellPhone": "370-4667788",
-        "email": "vzafra@domus.com"
+        "email": "vzafra@domus.com",
+        "color": "#F4DADA"
     },
     {
         "idUser": 5,
