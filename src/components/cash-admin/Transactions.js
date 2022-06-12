@@ -3,7 +3,7 @@ import Navigation from '../Navigation'
 import { Form } from 'react-bootstrap'
 
 
-export default function InputsOuputs() {
+export default function Transactions() {
 
     const [selectedClientType, setSelectedClientType] = useState();
 
