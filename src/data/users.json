@@ -1,7 +1,10 @@
 [
     {
         "idUser": 1,
-        "name": "Alberto Figueras",
+        "userName": "afigueras",
+        "lastName": "Figueras",
+        "firstName": "Alberto",
+        "dni": "22222333",
         "secretary": false,
         "cashier": false,
         "chiefAdmin": false,
@@ -11,11 +14,16 @@
         "marketing": false,
         "manager": false,
         "cellPhone": "362-4567890",
+        "cellPhone2": "",
+        "password": "123456",
         "email": "afigueras@domus.com"
     },
     {
         "idUser": 2,
-        "name": "Vicente Canovas",
+        "userName": "vcanovas",
+        "lastName": "Canovas",
+        "firstName": "Vicente",
+        "dni": "33444555",
         "secretary": false,
         "cashier": false,
         "chiefAdmin": false,
@@ -25,12 +33,17 @@
         "marketing": false,
         "manager": false,
         "cellPhone": "362-4555321",
+        "cellPhone2": "",
+        "password": "123456",
         "email": "vcanovas@domus.com",
         "color": "#FFF7AE"
     },
     {
         "idUser": 3,
-        "name": "Juan Sanchis",
+        "userName": "jsanchis",
+        "lastName": "Sanchis",
+        "firstName": "Juan",
+        "dni": "32111444",
         "secretary": false,
         "cashier": false,
         "chiefAdmin": false,
@@ -40,12 +53,17 @@
         "marketing": false,
         "manager": false,
         "cellPhone": "362-4111222",
+        "cellPhone2": "362-4111333",
+        "password": "123456",
         "email": "jsanchis@domus.com",
         "color": "#9EDED8"
     },
     {
         "idUser": 4,
-        "name": "Victor Zafra",
+        "userName": "vzafra",
+        "lastName": "Zafra",
+        "firstName": "Victor",
+        "dni": "27555888",
         "secretary": false,
         "cashier": false,
         "chiefAdmin": false,
@@ -55,12 +73,17 @@
         "marketing": false,
         "manager": false,
         "cellPhone": "370-4667788",
+        "cellPhone2": "",
+        "password": "123456",
         "email": "vzafra@domus.com",
         "color": "#F4DADA"
     },
     {
         "idUser": 5,
-        "name": "Andrea Báez",
+        "userName": "abaez",
+        "lastName": "Báez",
+        "firstName": "Andrea",
+        "dni": "39000444",
         "secretary": true,
         "cashier": false,
         "chiefAdmin": false,
@@ -70,6 +93,8 @@
         "marketing": false,
         "manager": false,
         "cellPhone": "362-4000010",
+        "cellPhone2": "362-4001100",
+        "password": "123456",
         "email": "abaez@domus.com"
     }
 ]

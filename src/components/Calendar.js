@@ -79,7 +79,7 @@ export default function Calendar({ currentDay, setCurrentDay }) {
     const agents = {}
     users.map( (user) => {
         if (user.seller) agents[user.idUser] = { 
-            name: user.name.split(" ")[0], 
+            name: user.firstName.split(" ")[0], 
             color: user.color 
         }
     })

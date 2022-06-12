@@ -10,8 +10,47 @@ export default function ListUsers() {
         users.map((element) => (element.typeString = ""))
     }, [])
 
-    const [selectedUser, setSelectedUser] = useState({});
-    const [selectedUserType, setSelectedUserType] = useState();
+    const noUser = {
+        idUser: "",
+        userName: "",
+        lastName: "",
+        firstName: "",
+        dni: "",
+        secretary: undefined,
+        cashier: undefined,
+        chiefAdmin: undefined,
+        chiefSeller: undefined,
+        sysAdmin: undefined,
+        seller: undefined,
+        marketing: undefined,
+        manager: undefined,
+        cellPhone: "",
+        cellPhone2: "",
+        password: "",
+        email: ""
+    }
+
+    const clearUser = {
+        idUser: "",
+        userName: "",
+        lastName: "",
+        firstName: "",
+        dni: "",
+        secretary: false,
+        cashier: false,
+        chiefAdmin: false,
+        chiefSeller: false,
+        sysAdmin: false,
+        seller: false,
+        marketing: false,
+        manager: false,
+        cellPhone: "",
+        cellPhone2: "",
+        password: "",
+        email: ""
+    }
+
+    const [selectedUser, setSelectedUser] = useState(noUser);
     const [selectedTypes, setSelectedTypes] = useState();
 
     const userType = {
@@ -30,17 +69,29 @@ export default function ListUsers() {
     }
 
     const selectUser = (e) => {
-        setSelectedUser(users[e.target.value])
+        console.log(e.target.value)
+        if(e.target.value >= 0) setSelectedUser(users[e.target.value])
     }
 
+    const unselectUser = () => {
+        setSelectedUser(clearUser)
+    }
+
+    const editUser = (e) => {
+        setSelectedUser(users[parseInt(e.target.name)])
+    }
+
+    const deleteUser = (e) => {
+        setSelectedUser(users[parseInt(e.target.name)])
+    }
 
     return (
         <div>
             <Navigation />
             <div className="row fluid col-md-12 mx-0 my-0 py-3" id="box1">
-                <h3 className="col-md-3">Usuarios</h3>
+                <h3 className="col-md-3">Gestión de Usuarios</h3>{console.log(selectedUser)}
                 <div className="col-md-2">
-                    <select name="selectUserType" className="form-select col-md-3" onChange={selectTypes}>
+                    <select name="selectUserType" className="form-select" onChange={selectTypes}>
                         <option value="">Todos los roles...</option>
                         <option value="sysAdmin">{userType.sysAdmin}</option>
                         <option value="manager">{userType.manager}</option>
@@ -52,97 +103,152 @@ export default function ListUsers() {
                         <option value="marketing">{userType.marketing}</option>
                     </select>
                 </div>
+                <div className="col-md-1"></div>
+                <div className="col-md-2">
+                    <Form.Control type="text" name="textSearch" placeholder="Realizar búsqueda..." defaultValue="" />
+                </div>
+                <div className="col-md-2">
+                    <select name="selectFieldSearch" className="form-select col-md-3">
+                        <option value="user">Usuario</option>
+                        <option value="dni">DNI</option>
+                        <option value="name">Nombre</option>
+                        <option value="cellPhone">Celular</option>
+                        <option value="email">e-mail</option>
+                    </select>
+                </div>
+                <div className="col-md-1">
+                    <button type="submit" className="btn btn-secondary">Buscar</button>
+                </div>
 
                 <hr className="my-4" />
 
-                <div>
-                    <form className="row my-2 g-3 col-md-12 justify-content-center">
-                        <div className="col-md-4">
-                            <div class="card">
-                                <div class="card-header">
-                                    Listado
-                                </div>
-                                <div class="card-body">
-                                    <ul className="list-group col-12">
-                                        {
-                                            users.map((element, index) => (
-                                                (element[selectedTypes] || !selectedTypes)
-                                                    ? <li className="list-group-item list-group-item-action" key={index} value={index}
-                                                        onClick={selectUser}>
-                                                        {
-                                                            Object.keys(userType).forEach(type =>
-                                                                (element[type]) ? element.typeString = "(" + userType[type] + ")" : null
+                <div className="row col-md-12">
+                    <div className="col-md-5">
+                        <div className="card">
+                            <div className="card-header">
+                                <h5 style={{ display: "inline-block" }}>Usuarios registrados</h5>
+                                <img src="../icons/plus-circle.svg" style={{ float: "right" }}
+                                    onClick={unselectUser} width="32" height="32" />
+                            </div>
+                            <div className="card-body">
+                                <ul className="list-group col-12">
+                                    {
+                                        users.map((element, index) => (
+                                            (element[selectedTypes] || !selectedTypes)
+                                                ?
+                                                <li className="list-group-item list-group-item-action" key={index} value={index}
+                                                    style={{ display: "inline-block" }} onClick={selectUser}>
+                                                    {
+                                                        Object.keys(userType).forEach(type =>
+                                                            (element[type]) ? element.typeString = "(" + userType[type] + ")" : null
 
-                                                            )
-                                                        }
-                                                        {element.name + " " + element.typeString}
-                                                    </li>
-                                                    : null
-                                            ))
-                                        }
-                                    </ul>
-                                </div>
+                                                        )
+                                                    }
+                                                    {element.lastName + ", " + element.firstName + element.typeString}
+                                                    <img src="../icons/trash.svg" onClick={deleteUser} name={index}
+                                                        style={{ float: "right", marginLeft: "10px" }} width="25" height="25" />
+                                                    <img src="../icons/pencil.svg" onClick={editUser} name={index}
+                                                        style={{ float: "right" }} width="20" height="20" />
+                                                </li>
+
+                                                : null
+                                        ))
+                                    }
+                                </ul>
                             </div>
                         </div>
-                        <div className="row col-md-6">
-                            <Form.Label className="col-md-3 my-2 alignR">Usuario:</Form.Label>
-                            <div className="col-md-8">
-                                <Form.Control type="text" name="lastName" value={selectedUser.name} />
+                    </div>
+                    <div className="col-md-7">
+                        <div className="card">
+                            <div className="card-header">
+                                <h5>{(selectedUser.idUser) ?
+                                    "Editar Usuario" : "Registrar Nuevo Usuario"}
+                                </h5>
                             </div>
-                            <Form.Label className="col-md-12 my-2 alignC">Roles</Form.Label>
-                            <Form.Label className="col-md-3 my-2 alignR">SysAdmin:</Form.Label>
-                            <div className="col-md-1  my-2">
-                                <Form.Check name="sysAdmin" value={selectedUser.sysAdmin} />
+                            <div className="card-body">
+                                <form className="row g-1 col-md-12 justify-content-center">
+                                    <div className="row col-md-10">
+                                        <Form.Label className="col-md-2 my-2 alignR">DNI:</Form.Label>
+                                        <div className="col-md-9">
+                                            <Form.Control type="text" name="dni" defaultValue={selectedUser.dni} />
+                                        </div>
+                                        <Form.Label className="col-md-2 my-2 alignR">Usuario:</Form.Label>
+                                        <div className="col-md-9">
+                                            <Form.Control type="text" name="userName" defaultValue={selectedUser.userName} />
+                                        </div>
+                                        <Form.Label className="col-md-2 my-2 alignR">Apellido:</Form.Label>
+                                        <div className="col-md-9">
+                                            <Form.Control type="text" name="lastName" defaultValue={selectedUser.lastName} />
+                                        </div>
+                                        <Form.Label className="col-md-2 my-3 alignR">Nombre:</Form.Label>
+                                        <div className="col-md-9">
+                                            <Form.Control type="text" name="firstName" defaultValue={selectedUser.firstName} />
+                                        </div>
+
+                                        <Form.Label className="col-md-2 my-2 alignR">SysAdmin:</Form.Label>
+                                        <div className="col-md-1  my-2">
+                                            <Form.Check name="sysAdmin" defaultChecked={selectedUser.sysAdmin} />
+                                        </div>
+                                        <Form.Label className="col-md-2 my-2 alignR">Gerente:</Form.Label>
+                                        <div className="col-md-1  my-2">
+                                            <Form.Check name="manager" defaultChecked={selectedUser.manager} />
+                                        </div>
+                                        <Form.Label className="col-md-4 my-2 alignR">Jefe Administrativo:</Form.Label>
+                                        <div className="col-md-1  my-2">
+                                            <Form.Check name="chiefAdmin" defaultChecked={selectedUser.chiefAdmin} />
+                                        </div>
+                                        <Form.Label className="col-md-2 my-2 alignR">Agente:</Form.Label>
+                                        <div className="col-md-1  my-2">
+                                            <Form.Check name="seller" defaultChecked={selectedUser.seller} />
+                                        </div>
+                                        <Form.Label className="col-md-2 my-2 alignR">Secretario:</Form.Label>
+                                        <div className="col-md-1  my-2">
+                                            <Form.Check name="secretary" defaultChecked={selectedUser.secretary} />
+                                        </div>
+                                        <Form.Label className="col-md-4 my-2 alignR">Jefe Comercialización:</Form.Label>
+                                        <div className="col-md-1  my-2">
+                                            <Form.Check name="chiefSeller" defaultChecked={selectedUser.chiefSeller} />
+                                        </div>
+                                        <Form.Label className="col-md-2 my-2 alignR">Cajero:</Form.Label>
+                                        <div className="col-md-1  my-2">
+                                            <Form.Check name="cashier" defaultChecked={selectedUser.cashier} />
+                                        </div>
+                                        <Form.Label className="col-md-2 my-2 alignR">Marketing:</Form.Label>
+                                        <div className="col-md-6  my-2">
+                                            <Form.Check name="marketing" defaultChecked={selectedUser.marketing} />
+                                        </div>
+
+                                        <Form.Label className="col-md-2 my-2 alignR">Celular:</Form.Label>
+                                        <div className="col-md-9">
+                                            <Form.Control type="text" name="cellPhone" defaultValue={selectedUser.cellPhone} />
+                                        </div>
+                                        <Form.Label className="col-md-2 my-2 alignR">Celular alt:</Form.Label>
+                                        <div className="col-md-9">
+                                            <Form.Control type="text" name="cellPhone2" defaultValue={selectedUser.cellPhone2} />
+                                        </div>
+                                        <Form.Label className="col-md-2 my-2 alignR">e-mail:</Form.Label>
+                                        <div className="col-md-9">
+                                            <Form.Control type="text" name="email" defaultValue={selectedUser.email} />
+                                        </div>
+                                        <Form.Label className="col-md-2 my-2 alignR">Pssword:</Form.Label>
+                                        <div className="col-md-9">
+                                            <Form.Control type="password" name="password" defaultValue={selectedUser.password} />
+                                        </div>
+                                        <div className="col-md-12 mt-3 alignC">
+                                            <button type="submit" className="btn btn-danger mx-3">Cancelar</button>
+                                            <button type="submit" className="btn btn-primary mx-3">Confirmar</button>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-2">
+                                        <img src="../icons/person-circle.svg" width="130px" height="130px" />
+                                        <button type="button" className="btn btn-primary mx-3">Subir foto</button>
+                                    </div>
+                                </form>
                             </div>
-                            <Form.Label className="col-md-2 my-2 alignR">Gerente:</Form.Label>
-                            <div className="col-md-1  my-2">
-                                <Form.Check name="manager" value={selectedUser.manager} />
-                            </div>
-                            <Form.Label className="col-md-3 my-2 alignR">Jefe Administrativo:</Form.Label>
-                            <div className="col-md-1  my-2">
-                                <Form.Check name="chiefAdmin" value={selectedUser.chiefAdmin} />
-                            </div>
-                            <Form.Label className="col-md-3 my-2 alignR">Agente:</Form.Label>
-                            <div className="col-md-1  my-2">
-                                <Form.Check name="seller" value={selectedUser.seller} />
-                            </div>
-                            <Form.Label className="col-md-2 my-2 alignR">Secretario:</Form.Label>
-                            <div className="col-md-1  my-2">
-                                <Form.Check name="secretary" value={selectedUser.secretary} />
-                            </div>
-                            <Form.Label className="col-md-3 my-2 alignR">Jefe Comercialización:</Form.Label>
-                            <div className="col-md-1  my-2">
-                                <Form.Check name="chiefSeller" value={selectedUser.chiefSeller} />
-                            </div>
-                            <Form.Label className="col-md-3 my-2 alignR">Cajero:</Form.Label>
-                            <div className="col-md-1  my-2">
-                                <Form.Check name="cashier" value={selectedUser.cashier} />
-                            </div>
-                            <Form.Label className="col-md-2 my-2 alignR">Marketing:</Form.Label>
-                            <div className="col-md-6  my-2">
-                                <Form.Check name="marketing" value={selectedUser.marketing} />
-                            </div>
-                            <Form.Label className="col-md-3 my-2 alignR">Fecha Ingreso:</Form.Label>
-                            <div className="col-md-8">
-                                <Form.Control type="date" name="birthdate" defaultValue="" />
-                            </div>
-                            <Form.Label className="col-md-3 my-2 alignR">Celular:</Form.Label>
-                            <div className="col-md-8">
-                                <Form.Control type="text" name="cellPhone" value={selectedUser.cellPhone} />
-                            </div>
-                            <Form.Label className="col-md-3 my-2 alignR">e-mail:</Form.Label>
-                            <div className="col-md-8">
-                                <Form.Control type="text" name="email" value={selectedUser.email} />
-                            </div>
-                            <div className="col-md-12 my-2 alignC">
-                            <button type="submit" className="btn btn-danger mx-3">Cancelar</button>
-                            <button type="submit" className="btn btn-primary mx-3">Confirmar</button>
                         </div>
-                        </div>
-                    </form>
-                </div>
+                    </div>
+                </div >
             </div >
         </div >
     )
-
 }
