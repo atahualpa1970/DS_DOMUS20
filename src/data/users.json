@@ -1,7 +1,6 @@
 [
     {
         "idUser": 1,
-        "userName": "afigueras",
         "lastName": "Figueras",
         "firstName": "Alberto",
         "dni": "22222333",
@@ -20,7 +19,6 @@
     },
     {
         "idUser": 2,
-        "userName": "vcanovas",
         "lastName": "Canovas",
         "firstName": "Vicente",
         "dni": "33444555",
@@ -40,7 +38,6 @@
     },
     {
         "idUser": 3,
-        "userName": "jsanchis",
         "lastName": "Sanchis",
         "firstName": "Juan",
         "dni": "32111444",
@@ -60,7 +57,6 @@
     },
     {
         "idUser": 4,
-        "userName": "vzafra",
         "lastName": "Zafra",
         "firstName": "Victor",
         "dni": "27555888",
@@ -80,7 +76,6 @@
     },
     {
         "idUser": 5,
-        "userName": "abaez",
         "lastName": "Báez",
         "firstName": "Andrea",
         "dni": "39000444",

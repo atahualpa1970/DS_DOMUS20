@@ -12,7 +12,6 @@ export default function ListUsers() {
 
     const noUser = {
         idUser: "",
-        userName: "",
         lastName: "",
         firstName: "",
         dni: "",
@@ -32,7 +31,6 @@ export default function ListUsers() {
 
     const clearUser = {
         idUser: "",
-        userName: "",
         lastName: "",
         firstName: "",
         dni: "",
@@ -109,9 +107,9 @@ export default function ListUsers() {
                 </div>
                 <div className="col-md-2">
                     <select name="selectFieldSearch" className="form-select col-md-3">
-                        <option value="user">Usuario</option>
                         <option value="dni">DNI</option>
-                        <option value="name">Nombre</option>
+                        <option value="firstName">Nombre</option>
+                        <option value="lastName">apellido</option>
                         <option value="cellPhone">Celular</option>
                         <option value="email">e-mail</option>
                     </select>
@@ -172,10 +170,6 @@ export default function ListUsers() {
                                         <div className="col-md-9">
                                             <Form.Control type="text" name="dni" defaultValue={selectedUser.dni} />
                                         </div>
-                                        <Form.Label className="col-md-2 my-2 alignR">Usuario:</Form.Label>
-                                        <div className="col-md-9">
-                                            <Form.Control type="text" name="userName" defaultValue={selectedUser.userName} />
-                                        </div>
                                         <Form.Label className="col-md-2 my-2 alignR">Apellido:</Form.Label>
                                         <div className="col-md-9">
                                             <Form.Control type="text" name="lastName" defaultValue={selectedUser.lastName} />
@@ -230,7 +224,7 @@ export default function ListUsers() {
                                         <div className="col-md-9">
                                             <Form.Control type="text" name="email" defaultValue={selectedUser.email} />
                                         </div>
-                                        <Form.Label className="col-md-2 my-2 alignR">Pssword:</Form.Label>
+                                        <Form.Label className="col-md-2 my-2 alignR">Contraseña:</Form.Label>
                                         <div className="col-md-9">
                                             <Form.Control type="password" name="password" defaultValue={selectedUser.password} />
                                         </div>

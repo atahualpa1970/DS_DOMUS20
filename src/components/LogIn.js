@@ -12,11 +12,11 @@ export default function WebHome() {
                 <h4 className="d-flex justify-content-center">Acceso al sistema</h4>
                 <form className="row my-2 g-3 d-flex justify-content-center" action="/app/home">
                     <div className="col-md-12">
-                        <label className="form-label">Usuario</label>
+                        <label className="form-label">Usuario:</label>
                         <input type="text" className="form-control" id="firstName" />
                     </div>
                     <div className="col-md-12">
-                        <label className="form-label">Password</label>
+                        <label className="form-label">Contraseña:</label>
                         <input type="password" className="form-control" id="lastName" />
                     </div>
                     <div className="col-md-12 d-flex justify-content-center">
