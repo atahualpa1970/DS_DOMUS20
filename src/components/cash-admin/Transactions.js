@@ -112,7 +112,7 @@ export default function Transactions() {
                         <Form.Control type="text" name="amount" value="" disabled />
                     </div>
                     <div className="col-md-2">
-                        <button>Generar Reporte</button>
+                        <button className="btn btn-primary">Generar Reporte</button>
                     </div>
                 </div>
             </div>
