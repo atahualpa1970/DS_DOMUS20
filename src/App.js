@@ -11,6 +11,7 @@ import ListDates from './components/dates/ListDates'
 import NewDate from './components/dates/NewDate'
 import CalendarDates from './components/dates/CalendarDates'
 
+import Transactions from './components/cash/Transactions'
 import NewClient from './components/clients/NewClient'
 import AdminClients from './components/clients/AdminClients'
 import ListClients from './components/clients/ListClients'
@@ -40,6 +41,7 @@ function App() {
                 <Route path="app/newDate" element={<NewDate />} />
                 <Route path="app/calendarDates" element={<CalendarDates />} />
 
+                <Route path="app/transactions" element={<Transactions />} />
                 <Route path="app/newClient" element={<NewClient />} />
                 <Route path="app/adminClients" element={<AdminClients />} />
                 <Route path="app/listClients" element={<ListClients />} />

@@ -50,7 +50,7 @@ export default function Navigation() {
                             <Link className="btn btn-outline-light dropdown-toggle" data-bs-toggle="dropdown" to="/" role="button"
                                 aria-expanded="false">Administracion</Link>
                             <ul className="dropdown-menu">
-                                <li><Link className="dropdown-item disabled" to="/app/home">Transacciones</Link></li>
+                                <li><Link className="dropdown-item" to="/app/transactions">Transacciones</Link></li>
                                 <li><Link className="dropdown-item disabled" to="/app/home">Reportes</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li><Link className="dropdown-item" to="/app/newClient">Nuevo Cliente</Link></li>

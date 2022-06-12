@@ -10,15 +10,6 @@ export default function NavWeb() {
                         
                     </Link>
                     <h3>Inmobiliaria Domus</h3>
-                    <div className="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-                        <ul className="navbar-nav mb-2 mb-lg-0">
-                            <li><Link className="btn btn-outline-dark" to="/">Home</Link></li>
-                            <li><Link className="btn btn-outline-dark" to="/">Comprar</Link></li>
-                            <li><Link className="btn btn-outline-dark" to="/">Alquilar</Link></li>
-                            <li><Link className="btn btn-outline-dark" to="/">Contacto</Link></li>
-                            <li><Link className="btn btn-outline-dark" to="/">Log In</Link></li>
-                        </ul>
-                    </div>
                 </div >
             </nav>
         )

@@ -5,12 +5,6 @@ import { Form } from 'react-bootstrap'
 
 export default function InputsOuputs() {
 
-    const [selectedClientType, setSelectedClientType] = useState();
-
-    const selectClientType = (e) => {
-        setSelectedClientType(e.target.value)
-    }
-
     return (
         <div>
             <Navigation />

@@ -23,21 +23,26 @@ export default function DebtorClients() {
                             <option value="particular">Particular</option>
                             <option value="corporativo">Corporativo</option>
                         </select>
-                    </div>
-                    <div className="col-md-2">
-                        <Form.Control type="text" name="lastName" placeholder="Apellido" defaultValue="" />
-                    </div>
-                    <div className="col-md-2">
-                        <Form.Control type="text" name="firstName" placeholder="Nombre" defaultValue="" />
-                    </div>
-                    <div className="col-md-2">
-                        <Form.Control type="text" name="companyName" placeholder="Razón Social" defaultValue="" />
-                    </div>
-                    <div className="col-md-2">
-                        <Form.Control type="text" name="cuit" placeholder="CUIT" defaultValue="" />
-                    </div>
-
-
+                    </div>                    {(selectedClientType === "particular") ?
+                        <div className="col-md-2">
+                            <Form.Control type="text" name="lastName" placeholder="Apellido" defaultValue="" />
+                        </div>
+                        : null}
+                    {(selectedClientType === "particular") ?
+                        <div className="col-md-2">
+                            <Form.Control type="text" name="firstName" placeholder="Nombre" defaultValue="" />
+                        </div>
+                        : null}
+                    {(selectedClientType === "corporativo") ?
+                        <div className="col-md-2">
+                            <Form.Control type="text" name="companyName" placeholder="Razón Social" defaultValue="" />
+                        </div>
+                        : null}
+                    {(selectedClientType === "particular" || selectedClientType === "corporativo") ?
+                        <div className="col-md-2">
+                            <Form.Control type="text" name="cuit" placeholder="CUIT" defaultValue="" />
+                        </div>
+                        : null}
                     <div className="col-md-1">
                         <button type="submit" className="btn btn-secondary">Buscar</button>
                     </div>
