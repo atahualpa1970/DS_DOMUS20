@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
 
-export default function Charges() {
+export default function Charges(props) {
 
     const navigate = useNavigate();
     const [selectedClientType, setSelectedClientType] = useState();
@@ -19,7 +19,7 @@ export default function Charges() {
 
     return (
         <div>
-            <Navigation />
+            <Navigation rol={props.rol} />
             <div className="row fluid col-md-12 mx-0 my-0 py-3" id="box1">
                 <h3 className="col-md-3">Cobros</h3>
                 <form className="row col-md-9 my-0 g-0">

@@ -67,7 +67,6 @@ export default function ListUsers() {
     }
 
     const selectUser = (e) => {
-        console.log(e.target.value)
         if(e.target.value >= 0) setSelectedUser(users[e.target.value])
     }
 
@@ -87,7 +86,7 @@ export default function ListUsers() {
         <div>
             <Navigation />
             <div className="row fluid col-md-12 mx-0 my-0 py-3" id="box1">
-                <h3 className="col-md-3">Gestión de Usuarios</h3>{console.log(selectedUser)}
+                <h3 className="col-md-3">Gestión de Usuarios</h3>
                 <div className="col-md-2">
                     <select name="selectUserType" className="form-select" onChange={selectTypes}>
                         <option value="">Todos los roles...</option>

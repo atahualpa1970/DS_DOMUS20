@@ -2,6 +2,8 @@ import React from 'react'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 
+import { LoggedProvider } from './context/DataContext'
+
 import WebHome from './web/WebHome'
 import RequestDate from './web/RequestDate'
 
@@ -30,40 +32,42 @@ import CashClosing from './components/cash-admin/CashClosing'
 import ListUsers from './components/users/ListUsers'
 
 function App() {
+
     return (
-        <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<WebHome />} />
-                <Route path="requestDate/:idProp" element={<RequestDate />} />
-                <Route path="app/" element={<LogIn />} />
-                <Route path="app/home" element={<ListDates />} />
+        <LoggedProvider>
+            <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<WebHome />} />
+                    <Route path="requestDate/:idProp" element={<RequestDate />} />
+                    <Route path="app/" element={<LogIn />} />
 
-                <Route path="app/listDates" element={<ListDates />} />
-                <Route path="app/newDate" element={<NewDate />} />
-                <Route path="app/calendarDates" element={<CalendarDates />} />
+                    <Route path="app/listDates" element={<ListDates />} />
+                    <Route path="app/newDate" element={<NewDate />} />
+                    <Route path="app/calendarDates" element={<CalendarDates />} />
 
-                <Route path="app/transactions" element={<Transactions />} />
-                <Route path="app/reports" element={<Reports />} />
-                <Route path="app/newClient" element={<NewClient />} />
-                <Route path="app/adminClients" element={<AdminClients />} />
-                <Route path="app/listClients" element={<ListClients />} />
-                <Route path="app/debtorClients" element={<DebtorClients />} />
+                    <Route path="app/transactions" element={<Transactions />} />
+                    <Route path="app/reports" element={<Reports />} />
+                    <Route path="app/newClient" element={<NewClient />} />
+                    <Route path="app/adminClients" element={<AdminClients />} />
+                    <Route path="app/listClients" element={<ListClients />} />
+                    <Route path="app/debtorClients" element={<DebtorClients />} />
 
-                <Route path="app/newProp" element={<NewProp />} />
-                <Route path="app/adminProps" element={<AdminProps />} />
-                <Route path="app/listProps" element={<ListProps />} />
+                    <Route path="app/newProp" element={<NewProp />} />
+                    <Route path="app/adminProps" element={<AdminProps />} />
+                    <Route path="app/listProps" element={<ListProps />} />
 
-                <Route path="app/charges" element={<Charges />} />
-                <Route path="app/chargesConfirm" element={<ChargesConfirm />} />
-                <Route path="app/inputsOutputs" element={<InputsOuputs />} />
-                <Route path="app/cashClosing" element={<CashClosing />} />
+                    <Route path="app/charges" element={<Charges />} />
+                    <Route path="app/chargesConfirm" element={<ChargesConfirm />} />
+                    <Route path="app/inputsOutputs" element={<InputsOuputs />} />
+                    <Route path="app/cashClosing" element={<CashClosing />} />
 
-                <Route path="app/listUsers" element={<ListUsers />} />
+                    <Route path="app/listUsers" element={<ListUsers />} />
 
-                <Route path="*" element={<div>Not Found</div>} />
+                    <Route path="*" element={<div>Not Found</div>} />
 
-            </Routes>
-        </BrowserRouter>
+                </Routes>
+            </BrowserRouter>
+        </LoggedProvider>
     )
 }
 

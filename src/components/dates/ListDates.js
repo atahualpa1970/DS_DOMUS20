@@ -3,7 +3,7 @@ import Navigation from '../Navigation'
 import Calendar from '../Calendar'
 import { Form } from 'react-bootstrap'
 
-export default function ListDates() {
+export default function ListDates(props) {
 
     const dates = require("../../data/requestDates.json")
     const realEstates = require("../../data/properties.json")
@@ -29,7 +29,8 @@ export default function ListDates() {
 
     return (
         <div>
-            <Navigation />
+            <Navigation rol={props.rol} />
+            {console.log("ROL: ",props.rol)}
             <div className="row fluid mx-1 my-1">
                 <div className="col-xl-3 col-12" id="box1">
                     <h1>Confirmar Cita</h1>

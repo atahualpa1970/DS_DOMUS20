@@ -83,7 +83,6 @@ export default function Calendar({ currentDay, setCurrentDay }) {
             color: user.color 
         }
     })
-    console.log("Users: ", agents)
 
     // ============= Calculo de las citas semanales ===============
     const confirmDates = require("../data/confirmDates.json")
@@ -153,7 +152,6 @@ export default function Calendar({ currentDay, setCurrentDay }) {
         }
     })
 
-    console.log("weekDays: ", tempWeekDays)
 
     return (
         <div>

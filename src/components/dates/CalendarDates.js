@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Navigation from '../Navigation'
 import Calendar from '../Calendar'
 
-export default function CalendarDates() {
+export default function CalendarDates(props) {
 
     const dates = require("../../data/confirmDates.json")
 
