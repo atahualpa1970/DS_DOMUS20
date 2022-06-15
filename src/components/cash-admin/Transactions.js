@@ -5,10 +5,10 @@ import { Form } from 'react-bootstrap'
 
 export default function Transactions() {
 
-    const [selectedClientType, setSelectedClientType] = useState();
+    const [selectedMovementType, setSelectedMovementType] = useState();
 
-    const selectClientType = (e) => {
-        setSelectedClientType(e.target.value)
+    const selectMovementClientType = (e) => {
+        setSelectedMovementType(e.target.value)
     }
 
     return (
@@ -18,7 +18,7 @@ export default function Transactions() {
                 <h3 className="col-md-3">Transacciones</h3>
                 <form className="row col-md-9 my-0 g-0">
                     <div className="col-md-2">
-                        <select name="clientType" className="form-select col-md-3" onChange={selectClientType}>
+                        <select name="movementType" className="form-select col-md-3" onChange={selectMovementClientType}>
                             <option value="">Tipo de transaccion...</option>
                             <option value="alquiler" selected>Cobro de alquiler</option>
                             <option value="comision">Cobro de comision</option>
@@ -95,21 +95,21 @@ export default function Transactions() {
                 </div>
                 <hr className="my-4" />
                 <div className="row my-2">
-                    <Form.Label className="col-md-2 my-2 alignR">Total de Transacciones:</Form.Label>
+                    <Form.Label className="col-md-2 my-2 alignR">Total de Cobros:</Form.Label>
                     <div className="col-md-1">
-                        <Form.Control type="text" name="amount" value="" disabled />
+                        <Form.Control type="text" name="totalCollection" value="" disabled />
                     </div>
                     <Form.Label className="col-md-1 my-2 alignR">Total Ingresos:</Form.Label>
                     <div className="col-md-1">
-                        <Form.Control type="text" name="amount" value="" disabled />
+                        <Form.Control type="text" name="totalIncome" value="" disabled />
                     </div>
                     <Form.Label className="col-md-1 my-2 alignR">Total Egresos:</Form.Label>
                     <div className="col-md-1">
-                        <Form.Control type="text" name="amount" value="" disabled />
+                        <Form.Control type="text" name="totalExpenses" value="" disabled />
                     </div>
-                    <Form.Label className="col-md-1 my-2 alignR">Importe General:</Form.Label>
+                    <Form.Label className="col-md-1 my-2 alignR">Total General:</Form.Label>
                     <div className="col-md-1">
-                        <Form.Control type="text" name="amount" value="" disabled />
+                        <Form.Control type="text" name="grandTotal" value="" disabled />
                     </div>
                     <div className="col-md-2">
                         <button className="btn btn-primary">Generar Reporte</button>

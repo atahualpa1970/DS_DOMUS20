@@ -101,9 +101,9 @@ export default function Navigation() {
                             <li><Link className="dropdown-item" onClick={() => changeRolTo("cashier")} to="/app/charges">{userRoles.cashier}</Link></li>
                             <li><Link className="dropdown-item" onClick={() => changeRolTo("chiefAdmin")} to="/app/calendarDates">{userRoles.chiefAdmin}</Link></li>
                             <li><Link className="dropdown-item" onClick={() => changeRolTo("chiefSeller")} to="/app/calendarDates">{userRoles.chiefSeller}</Link></li>
-                            <li><Link className="dropdown-item" onClick={() => changeRolTo("marketing")} to="/app/calendarDates">{userRoles.marketing}</Link></li>
+                            <li><Link className="dropdown-item" onClick={() => changeRolTo("marketing")} to="/app/listProps">{userRoles.marketing}</Link></li>
                             <li><hr className="dropdown-divider" /></li>
-                            <li><Link className="dropdown-item" to="/app/home">Salir</Link></li>
+                            <li><Link className="dropdown-item" to="/app">Salir</Link></li>
                         </ul>
                     </li>
                 </ul>

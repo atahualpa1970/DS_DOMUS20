@@ -30,8 +30,12 @@ export default function Calendar({ currentDay, setCurrentDay }) {
     }
 
     const getToday = () => {
-        setSelectFullDay(new Date())
-        setCurrentDay(new Date().toISOString().substring(0, 10))
+        const today = new Date()
+        setSelectFullDay(today)
+        const yyyy = today.getFullYear()
+        const mm = (today.getMonth() + 1).toString().padStart(2, 0)
+        const dd = today.getDate().toString().padStart(2, 0)
+        setCurrentDay(yyyy+"-"+mm+"-"+dd)
     }
 
     const nextMonth = () => {
@@ -104,49 +108,56 @@ export default function Calendar({ currentDay, setCurrentDay }) {
                 key = element.timeEvent.substring(0, 2) + "-0"
                 tempWeekDays[key].push({ 
                     agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName 
+                    nameClient: element.lastName + " " + element.firstName,
+                    cellPhone: "(" + element.cellPhone + ")"
                 })
                 break;
             case weekDays[1]:
                 key = element.timeEvent.substring(0, 2) + "-1"
                 tempWeekDays[key].push({ 
                     agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName 
+                    nameClient: element.lastName + " " + element.firstName,
+                    cellPhone: "(" + element.cellPhone + ")"
                 })
                 break;
             case weekDays[2]:
                 key = element.timeEvent.substring(0, 2) + "-2"
                 tempWeekDays[key].push({ 
                     agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName 
+                    nameClient: element.lastName + " " + element.firstName,
+                    cellPhone: "(" + element.cellPhone + ")"
                 })
                 break;
             case weekDays[3]:
                 key = element.timeEvent.substring(0, 2) + "-3"
                 tempWeekDays[key].push({ 
                     agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName 
+                    nameClient: element.lastName + " " + element.firstName,
+                    cellPhone: "(" + element.cellPhone + ")"
                 })
                 break;
             case weekDays[4]:
                 key = element.timeEvent.substring(0, 2) + "-4"
                 tempWeekDays[key].push({ 
                     agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName 
+                    nameClient: element.lastName + " " + element.firstName,
+                    cellPhone: "(" + element.cellPhone + ")"
                 })
                 break;
             case weekDays[5]:
                 key = element.timeEvent.substring(0, 2) + "-5"
                 tempWeekDays[key].push({ 
                     agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName 
+                    nameClient: element.lastName + " " + element.firstName,
+                    cellPhone: "(" + element.cellPhone + ")"
                 })
                 break;
             case weekDays[6]:
                 key = element.timeEvent.substring(0, 2) + "-6"
                 tempWeekDays[key].push({ 
                     agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName 
+                    nameClient: element.lastName + " " + element.firstName,
+                    cellPhone: "(" + element.cellPhone + ")"
                 })
                 break;
         }
@@ -213,7 +224,9 @@ export default function Calendar({ currentDay, setCurrentDay }) {
                                                             {
                                                                 tempWeekDays[hour.substring(0, 2) + "-" + index].map((item) => (
                                                                     <span key={item.agent.name} className="badge rounded-pill my-1"
-                                                                        style={{ "backgroundColor": item.agent.color, "color": "black" }}>
+                                                                        style={{ "backgroundColor": item.agent.color, "color": "black" }}
+                                                                        data-bs-toggle="tooltip" data-bs-html="true" 
+                                                                        title={item.nameClient +" "+ item.cellPhone }>
                                                                         {item.agent.name}
                                                                     </span>
                                                                 ))
