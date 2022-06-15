@@ -1,0 +1,38 @@
+{
+    "norole":{
+        "changeDate": " d-none",
+        "changeStatusDate": " d-none"
+    },
+    "sysAdmin":{
+        "changeDate": " d-none",
+        "changeStatusDate": " d-none"
+    },
+    "manager":{
+        "changeDate": " d-none",
+        "changeStatusDate": " d-none"
+    },
+    "seller":{
+        "changeDate": " d-none",
+        "changeStatusDate": ""
+    },
+    "secretary":{
+        "changeDate": "",
+        "changeStatusDate": " d-none"
+    },
+    "cashier":{
+        "changeDate": " d-none",
+        "changeStatusDate": " d-none"
+    },
+    "chiefAdmin":{
+        "changeDate": " d-none",
+        "changeStatusDate": " d-none"
+    },
+    "chiefSeller":{
+        "changeDate": " d-none",
+        "changeStatusDate": " d-none"
+    },
+    "marketing":{
+        "changeDate": " d-none",
+        "changeStatusDate": " d-none"
+    }
+}

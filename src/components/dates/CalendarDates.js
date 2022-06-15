@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import Navigation from '../Navigation'
 import Calendar from '../Calendar'
+import { Form } from 'react-bootstrap'
+import { LoggedContext } from '../../context/DataContext';
 
-export default function CalendarDates(props) {
+
+export default function CalendarDates() {
+
+    const { loggedUser } = useContext(LoggedContext)
 
     const dateSort = (items) => {
         items.sort(function (a, b) {
@@ -13,10 +18,13 @@ export default function CalendarDates(props) {
         return items
     }
 
+    const activeAction = require("../../data/actionPermissions.json")
     const users = require("../../data/users.json")
     const realEstates = require("../../data/properties.json")
+    console.log("REALSTATES: ", realEstates)
     var dates = require("../../data/confirmDates.json")
     dates = dateSort(dates)
+
 
     const dateStringUS = (date) => {
         const yyyy = date.getFullYear()
@@ -42,10 +50,11 @@ export default function CalendarDates(props) {
                 <div className="col-xl-3">
                     <h3>Citas del  {changeDateFormatUStoES(currentDay)}</h3>
                     <br />
-                    {
-                        dates.map((element, index) => (
-                            (element.dateEvent === currentDay) ?
-                                <div className="accordion" id="acordionDates">
+                    <div className="accordion" id="acordionDates">
+                        {
+                            dates.map((element, index) => (
+                                (element.dateEvent === currentDay) ?
+
                                     <div className="accordion-item">
                                         <h2 className="accordion-header" id={"H" + index}>
                                             <button className="accordion-button collapsed" type="button"
@@ -57,19 +66,58 @@ export default function CalendarDates(props) {
                                         <div id={"C" + index} className="accordion-collapse collapse"
                                             aria-labelledby={"H" + index} data-bs-parent="#acordionDates">
                                             <div className="accordion-body">
-                                                {" * Celular: " + element.cellPhone}<br />
-                                                {" * CodProp: " + element.codeProp}<br />
-                                                {" * Agente: " + users.find( (x) => x.idUser == element.idAgent).firstName }
+                                                <form className="row my-2 g-1">
+                                                    <div className="input-group">
+                                                        <div className="input-group-text">Agente: </div>
+                                                        <Form.Control type="text" name="address"
+                                                            value={users.find((x) => x.idUser == element.idAgent).firstName} />
+                                                        <Form.Control type="time" name="time" value={element.timeEvent} />
+                                                    </div>
+                                                    <div className="col-md-7">
+                                                        <Form.Control type="text" name="fullName"
+                                                            value={element.firstName + " " + element.lastName} />
+                                                    </div>
+                                                    <div className="col-md-5">
+                                                        <Form.Control type="text" name="cell" value={element.cellPhone} />
+                                                    </div>
+                                                    <div className="input-group col-md-12">
+                                                        <div className="input-group-text">email:</div>
+                                                        <Form.Control type="text" name="email" value={element.email} />
+                                                    </div>
+                                                    <div className={"col-md-5"+activeAction[loggedUser.role].changeStatusDate}>
+                                                        <select name="seller" className="form-select">
+                                                            <option defaultValue="">Confirmado</option>
+                                                            <option value="cancel">Cancelado</option>
+                                                            <option value="finish">Terminado</option>
+                                                        </select>
+                                                    </div>
+                                                    <div className={"col-7 d-flex justify-content-center col-md-5"+activeAction[loggedUser.role].changeStatusDate}>
+                                                        <button type="submit" className="btn btn-secondary">Cambiar estado</button>
+                                                    </div>
+                                                    <hr className="my-3" />
+                                                    <div className="col-12">
+                                                        <div className="input-group">
+                                                            <div className="input-group-text">{element.codeProp}</div>
+                                                            <Form.Control type="text" name="address" value="Dirección de la propiedad a visitar" />
+                                                        </div>
+                                                    </div>
+                                                    <div className={"col-6 d-flex justify-content-center"+activeAction[loggedUser.role].changeDate}>
+                                                        <button type="submit" className="btn btn-danger">Cancelar</button>
+                                                    </div>
+                                                    <div className={"col-6 d-flex justify-content-center"+activeAction[loggedUser.role].changeDate}>
+                                                        <button type="submit" className="btn btn-primary">Confirmar</button>
+                                                    </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                : null
-                        ))
-                    }
+                                    : null
+                            ))
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 
 }
