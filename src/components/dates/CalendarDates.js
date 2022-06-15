@@ -68,20 +68,22 @@ export default function CalendarDates() {
                                             <div className="accordion-body">
                                                 <form className="row my-2 g-1">
                                                     <div className="input-group">
-                                                        <div className="input-group-text">Agente: </div>
+                                                        <div className="input-group-text col-md-3">Agente: </div>
                                                         <Form.Control type="text" name="address"
                                                             value={users.find((x) => x.idUser == element.idAgent).firstName} />
                                                         <Form.Control type="time" name="time" value={element.timeEvent} />
                                                     </div>
-                                                    <div className="col-md-7">
+                                                    <div className="input-group col-md-12">
+                                                        <div className="input-group-text col-md-3">Cliente:</div>
                                                         <Form.Control type="text" name="fullName"
                                                             value={element.firstName + " " + element.lastName} />
                                                     </div>
-                                                    <div className="col-md-5">
+                                                    <div className="input-group col-md-12">
+                                                        <div className="input-group-text col-md-3">Celular:</div>
                                                         <Form.Control type="text" name="cell" value={element.cellPhone} />
                                                     </div>
                                                     <div className="input-group col-md-12">
-                                                        <div className="input-group-text">email:</div>
+                                                        <div className="input-group-text col-md-3">email:</div>
                                                         <Form.Control type="text" name="email" value={element.email} />
                                                     </div>
                                                     <div className={"col-md-5"+activeAction[loggedUser.role].changeStatusDate}>
