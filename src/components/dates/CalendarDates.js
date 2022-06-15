@@ -60,7 +60,13 @@ export default function CalendarDates() {
                                             <button className="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target={"#C" + index}
                                                 aria-expanded="false" aria-controls={"C" + index}>
-                                                {"(" + element.timeEvent + ") " + element.lastName + ", " + element.firstName}
+                                                    {"(" + element.timeEvent + ") "} 
+                                                    <span className="badge mx-2" style={{ 
+                                                        "backgroundColor": users.find((x) => x.idUser == element.idAgent).color, 
+                                                        "color": "black" }}>
+                                                        {users.find((x) => x.idUser == element.idAgent).firstName}
+                                                    </span>
+                                                    {element.lastName + ", " + element.firstName}
                                             </button>
                                         </h2>
                                         <div id={"C" + index} className="accordion-collapse collapse"
