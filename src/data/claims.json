@@ -1,27 +1,21 @@
 [
   {
     "idClaim": 1,
-    "idUser": 1,
-    "lastName": "Figueras",
-    "firstName": "Alberto",
+    "idClient": 123,
     "idProp": 1,
     "idType": "repair",
     "descript": "Humedad en el techo del baño"
   },
   {
     "idClaim": 2,
-    "idUser": 2,
-    "lastName": "Canovas",
-    "firstName": "Vicente",
+    "idClient": 124,
     "idProp": 2,
     "idType": "repair",
     "descript": "Pisos flojos"   
   },
   {
     "idClaim": 3,
-    "idUser": 3,
-    "lastName": "Sanchis",
-    "firstName": "Juan",
+    "idClient": 125,
     "idProp": 3,
     "idType": "admin",
     "descript": "No llega la factura de Secheep"   

@@ -1,79 +1,79 @@
 [
-    {
-        "idClient": 123,
-        "clientTipe": "Particular",
-        "lastName": "Benitez",
-        "firstName": "Marta",
-        "dni": "40404404",
-        "cuit": "27-40404404-0",
-        "birthdate": "24/01/1998",
-        "cellPhone": "3624-111111",
-        "email": "mbenitez001@gmail.com"
-    },
-    {
-        "idClient": 124,
-        "clientTipe": "Particular",
-        "lastName": "Gutierrez",
-        "firstName": "Sergio",
-        "dni": "25013013",
-        "cuit": "20-25013013-8",
-        "birthdate": "03/03/1976",
-        "cellPhone": "3624-222222",
-        "email": "sgutierrez001@gmail.com"
-    },
-    {
-        "idClient": 125,
-        "clientTipe": "Particular",
-        "lastName": "Herrera",
-        "firstName": "Ricardo",
-        "dni": "380123456",
-        "cuit": "20-380123456-7",
-        "birthdate": "30/11/1995",
-        "cellPhone": "3624-333333",
-        "email": "rherrera001@gmail.com"
-    },
-    {
-        "idClient": 126,
-        "clientTipe": "Corporativo",
-        "companyName": "Super Autos",
-        "owners": "Claudio Fernandez, Horacio Perez",
-        "cuit": "33-98050506-1",
-        "phoneNumber": "3624-444444",
-        "email": "ventas@superautos.com",
-        "officeAddress": "Calle Importante 4567",
-        "seller": 2      
-    },
-    {
-        "idClient": 127,
-        "clientTipe": "Particular",
-        "lastName": "Garcia",
-        "firstName": "Liliana",
-        "dni": "42808080",
-        "cuit": "27-42808080-5",
-        "birthdate": "25/02/2000",
-        "cellPhone": "3624-555555",
-        "email": "lgarcia005@gmail.com"
-    },
-    {
-        "idClient": 128,
-        "clientTipe": "Particular",
-        "lastName": "Aguirre",
-        "firstName": "Pedro Luis",
-        "dni": "42900900",
-        "cuit": "20-42900900-6",
-        "birthdate": "25/05/2000",
-        "cellPhone": "3624-666666",
-        "email": "plaguirre001@gmail.com"
-    },
-    {
-        "idClient": 129,
-        "clientTipe": "Corporativo",
-        "companyName": "Motorepuestos 2",
-        "owners": "Juana Suarez, Miguel Medina",
-        "cuit": "33-98060708-2",
-        "phoneNumber": "3624-777777",
-        "email": "ventas@motorepuestos2.com",
-        "officeAddress": "Ruta 11 Km 1004",
-        "seller": 2      
-    }
+  {
+    "idClient": 123,
+    "clientType": "Particular",
+    "lastName": "Benitez",
+    "firstName": "Marta",
+    "dni": "40404404",
+    "cuit": "27-40404404-0",
+    "birthdate": "24/01/1998",
+    "cellPhone": "3624-111111",
+    "email": "mbenitez001@gmail.com"
+  },
+  {
+    "idClient": 124,
+    "clientType": "Particular",
+    "lastName": "Gutierrez",
+    "firstName": "Sergio",
+    "dni": "25013013",
+    "cuit": "20-25013013-8",
+    "birthdate": "03/03/1976",
+    "cellPhone": "3624-222222",
+    "email": "sgutierrez001@gmail.com"
+  },
+  {
+    "idClient": 125,
+    "clientType": "Particular",
+    "lastName": "Herrera",
+    "firstName": "Ricardo",
+    "dni": "380123456",
+    "cuit": "20-380123456-7",
+    "birthdate": "30/11/1995",
+    "cellPhone": "3624-333333",
+    "email": "rherrera001@gmail.com"
+  },
+  {
+    "idClient": 126,
+    "clientType": "Corporativo",
+    "companyName": "Super Autos",
+    "owners": "Claudio Fernandez, Horacio Perez",
+    "cuit": "33-98050506-1",
+    "phoneNumber": "3624-444444",
+    "email": "ventas@superautos.com",
+    "officeAddress": "Calle Importante 4567",
+    "seller": 2
+  },
+  {
+    "idClient": 127,
+    "clientType": "Particular",
+    "lastName": "Garcia",
+    "firstName": "Liliana",
+    "dni": "42808080",
+    "cuit": "27-42808080-5",
+    "birthdate": "25/02/2000",
+    "cellPhone": "3624-555555",
+    "email": "lgarcia005@gmail.com"
+  },
+  {
+    "idClient": 128,
+    "clientType": "Particular",
+    "lastName": "Aguirre",
+    "firstName": "Pedro Luis",
+    "dni": "42900900",
+    "cuit": "20-42900900-6",
+    "birthdate": "25/05/2000",
+    "cellPhone": "3624-666666",
+    "email": "plaguirre001@gmail.com"
+  },
+  {
+    "idClient": 129,
+    "clientType": "Corporativo",
+    "companyName": "Motorepuestos 2",
+    "owners": "Juana Suarez, Miguel Medina",
+    "cuit": "33-98060708-2",
+    "phoneNumber": "3624-777777",
+    "email": "ventas@motorepuestos2.com",
+    "officeAddress": "Ruta 11 Km 1004",
+    "seller": 2
+  }
 ]

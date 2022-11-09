@@ -4,36 +4,30 @@ import { Form } from 'react-bootstrap'
 
 const claims = require("../../data/claims.json")
 const props = require("../../data/properties.json")
+const clients = require("../../data/clients.json")
+const propCli = require("../../data/relPropCli.json")
 
 export default function ListClaims() {
 
-  useEffect(() => {
-    claims.map((element) => (
-      element.address = props.find(val => val.idProp == element.idProp).address)
-    )
-  }, [])
+  claims.map((element) => {
+    element.address = props.find(val => val.idProp == element.idProp).address
+    element.lastName = clients.find(val => val.idClient == element.idClient).lastName
+    element.firstName = clients.find(val => val.idClient == element.idClient).firstName
+  })
 
-  const noUser = {
+  const clearClaim = {
     idClaim: "",
+    idClient: "",
     lastName: "",
     firstName: "",
-    address: "",
     cellPhone: "",
-    descript: "",
-    email: ""
+    email: "",
+    idProp: "",
+    address: "",
+    descript: ""
   }
 
-  const clearUser = {
-    idClaim: "",
-    lastName: "",
-    firstName: "",
-    address: "",
-    cellPhone: "",
-    descript: "",
-    email: ""
-  }
-
-  const [selectedClaim, setSelectedClaim] = useState(noUser);
+  const [selectedClaim, setSelectedClaim] = useState(clearClaim);
   const [selectedTypes, setSelectedTypes] = useState();
 
 
@@ -52,11 +46,54 @@ export default function ListClaims() {
   }
 
   const unselectUser = () => {
-    setSelectedClaim(clearUser)
+    setSelectedClaim(clearClaim)
+    document.getElementById("claimForm").reset();
+    document.getElementById("idProp").focus()
   }
 
   const editUser = (e) => {
     setSelectedClaim(claims[parseInt(e.target.name)])
+  }
+
+  const searchProp = (e) => {
+    const prop = props.find(val => val.idProp == e.target.value)
+    if (prop) document.getElementById("address").value = prop.address
+    else { console.log("PROP: ", prop); unselectUser() }
+  }
+
+  const searchClient = (e) => {
+    const client = clients.find(val => val.idClient == e.target.value)
+    if (client) {
+      document.getElementById("lastName").value = client.lastName
+      document.getElementById("firstName").value = client.firstName
+      const relPropCli = propCli.find(val => val.idClient == client.idClient)
+      const prop = props.find(val => val.idProp == relPropCli.idProp)
+      document.getElementById("idProp").value = prop.idProp
+      document.getElementById("address").value = prop.address
+    }
+    else unselectUser()
+  }
+
+  const handleSubmit = (e) => {
+    let max = 0
+    claims.map((element) => ((element.idClaim > max) ? max = element.idClaim : null))
+    const inputForm = e.target.form.elements
+    console.log("EVENT: ", inputForm)
+    const newClaim = {
+      idClaim: max + 1,
+      idClient: inputForm.idClient.value,
+      lastName: inputForm.lastName.value,
+      firstName: inputForm.firstName.value,
+      cellPhone: inputForm.cellPhone.value,
+      email: inputForm.email.value,
+      idProp: inputForm.idProp.value,
+      address: inputForm.address.value,
+      descript: inputForm.descript.value
+    }
+    console.log("NEWCLAIM: ", newClaim)
+    claims.push(newClaim)
+    console.log("RECLAMOS: ", claims)
+    unselectUser()
   }
 
   return (
@@ -129,35 +166,41 @@ export default function ListClaims() {
                 </h5>
               </div>
               <div className="card-body">
-                <form className="row g-1 col-md-12 justify-content-center">
-                  <div className="row col-md-10">
-                    <Form.Label className="col-md-2 my-2 alignR">Dirección:</Form.Label>
-                    <div className="col-md-9">
-                      <Form.Control type="text" name="address" defaultValue={selectedClaim.address} />
+                <form id="claimForm" className="row g-1 col-md-12 justify-content-center">
+                  <div className="row col-md-12">
+                    <Form.Label className="col-md-2 my-2 alignR">Cod.Cliente:</Form.Label>
+                    <div className="col-md-2">
+                      <Form.Control type="text" name="idClient" id="idClient" defaultValue={selectedClaim.idProp} onBlur={searchClient} />
                     </div>
-                    <Form.Label className="col-md-2 my-2 alignR">Apellido:</Form.Label>
-                    <div className="col-md-9">
-                      <Form.Control type="text" name="lastName" defaultValue={selectedClaim.lastName} />
+                    <div className="col-md-4">
+                      <Form.Control type="text" name="lastName" id="lastName" defaultValue={selectedClaim.lastName} disabled />
                     </div>
-                    <Form.Label className="col-md-2 my-3 alignR">Nombre:</Form.Label>
-                    <div className="col-md-9">
-                      <Form.Control type="text" name="firstName" defaultValue={selectedClaim.firstName} />
+                    <div className="col-md-4">
+                      <Form.Control type="text" name="firstName" id="firstName" defaultValue={selectedClaim.firstName} disabled />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">Celular:</Form.Label>
-                    <div className="col-md-9">
+                    <div className="col-md-10">
                       <Form.Control type="text" name="cellPhone" defaultValue={selectedClaim.cellPhone} />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">e-mail:</Form.Label>
-                    <div className="col-md-9">
+                    <div className="col-md-10">
                       <Form.Control type="text" name="email" defaultValue={selectedClaim.email} />
                     </div>
+                    <Form.Label className="col-md-2 my-2 alignR">Propiedad:</Form.Label>
+                    <div className="col-md-2">
+                      <Form.Control type="text" name="idProp" id="idProp" defaultValue={selectedClaim.idProp} disabled />
+                    </div>
+                    <Form.Label className="col-md-2 my-2 alignR">Dirección:</Form.Label>
+                    <div className="col-md-6">
+                      <Form.Control type="text" name="address" id="address" defaultValue={selectedClaim.address} disabled />
+                    </div>
                     <Form.Label className="col-md-2 my-2 alignR">Descripción:</Form.Label>
-                    <div className="col-md-9">
+                    <div className="col-md-10">
                       <Form.Control type="descript" name="descript" defaultValue={selectedClaim.descript} />
                     </div>
                     <div className="col-md-12 mt-3 alignC">
-                      <button type="submit" className="btn btn-danger mx-3">Cancelar</button>
-                      <button type="submit" className="btn btn-primary mx-3">Confirmar</button>
+                      <button type="button" className="btn btn-danger mx-3" onClick={unselectUser}>Cancelar</button>
+                      <button type="button" className="btn btn-primary mx-3" onClick={handleSubmit}>Confirmar</button>
                     </div>
                   </div>
                 </form>

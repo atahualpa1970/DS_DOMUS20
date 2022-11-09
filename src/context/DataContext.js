@@ -6,7 +6,7 @@ export const LoggedContext = createContext()
 
 export const LoggedProvider = ({ children }) => {
 
-    const [loggedUser, setLoggedUser] = useState({id:0, role:"norole", rolName: "Sin Rol"})
+    const [loggedUser, setLoggedUser] = useState({id:1, role:"sysAdmin", rolName: "Sys Admin"})
 
     return (
         <LoggedContext.Provider value={{ loggedUser, setLoggedUser }}>

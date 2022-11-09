@@ -1,0 +1,22 @@
+[
+  {
+    "idClient": 123,
+    "idProp": 1
+  },
+  {
+    "idClient": 124,
+    "idProp": 2
+  },
+  {
+    "idClient": 125,
+    "idProp": 3
+  },
+  {
+    "idClient": 126,
+    "idProp": 4 
+  },
+  {
+    "idClient": 127,
+    "idProp": 5
+  }
+]
