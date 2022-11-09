@@ -29,6 +29,7 @@ import ChargesConfirm from './components/cash-admin/ChargesConfirm'
 import InputsOuputs from './components/cash-admin/InputsOutput'
 import CashClosing from './components/cash-admin/CashClosing'
 
+import ListClaims from './components/claim/ListClaims'
 import ListUsers from './components/users/ListUsers'
 
 function App() {
@@ -60,6 +61,8 @@ function App() {
                     <Route path="app/chargesConfirm" element={<ChargesConfirm />} />
                     <Route path="app/inputsOutputs" element={<InputsOuputs />} />
                     <Route path="app/cashClosing" element={<CashClosing />} />
+
+                    <Route path="app/listClaims" element={<ListClaims />} />
 
                     <Route path="app/listUsers" element={<ListUsers />} />
 
