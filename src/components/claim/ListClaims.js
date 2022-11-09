@@ -32,9 +32,9 @@ export default function ListClaims() {
 
 
   const claimType = {
-    repair: "Reparación",
-    admin: "Administrativo",
-    missing: "Faltante"
+    repair: { title: "Reparación", color: "red" },
+    admin: { title: "Administrativo", color: "green" },
+    missing: { title: "Faltante", color: "yellow" }
   }
 
   const selectTypes = (e) => {
@@ -104,9 +104,9 @@ export default function ListClaims() {
         <div className="col-md-2">
           <select name="selectClaimType" className="form-select" onChange={selectTypes}>
             <option value="">Todos los tipos...</option>
-            <option value="repair">{claimType.repair}</option>
-            <option value="admin">{claimType.admin}</option>
-            <option value="missing">{claimType.missing}</option>
+            <option value="repair">{claimType.repair.title}</option>
+            <option value="admin">{claimType.admin.title}</option>
+            <option value="missing">{claimType.missing.title}</option>
           </select>
         </div>
         <div className="col-md-1"></div>
@@ -146,10 +146,18 @@ export default function ListClaims() {
                           style={{ display: "inline-block" }} onClick={selectUser}>
                           {element.lastName + ", " + element.firstName}<br />
                           {props.find(val => val.idProp == element.idProp).address}
-                          <p>{"(" + claimType[element.idType] + ") " + element.descript}
+                          <p>
+                            <span key={claimType[element.idType].title} className="badge rounded-pill my-1"
+                              style={{ "backgroundColor": claimType[element.idType].color, "color": "black" }}
+                              data-bs-toggle="tooltip" data-bs-html="true"
+                              title={claimType[element.idType].title}>
+                              {claimType[element.idType].title}
+                            </span>
+                            {" "+element.descript}
                             <img src="../icons/pencil.svg" onClick={editUser} name={index}
                               style={{ float: "right" }} width="20" height="20" /></p>
                         </li>
+
 
                         : null
                     ))
