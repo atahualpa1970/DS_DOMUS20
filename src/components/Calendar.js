@@ -83,7 +83,7 @@ export default function Calendar({ currentDay, setCurrentDay }) {
     const agents = {}
     users.map( (user) => {
         if (user.seller) agents[user.idUser] = { 
-            name: user.firstName.split(" ")[0], 
+            name: user.nombre.split(" ")[0], 
             color: user.color 
         }
     })
@@ -103,61 +103,61 @@ export default function Calendar({ currentDay, setCurrentDay }) {
 
     confirmDates.map((element) => {
         let key = ""
-        switch (element.dateEvent) {
+        switch (element.fechaDeCita) {
             case weekDays[0]:
-                key = element.timeEvent.substring(0, 2) + "-0"
+                key = element.horaDeCita.substring(0, 2) + "-0"
                 tempWeekDays[key].push({ 
-                    agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName,
-                    cellPhone: "(" + element.cellPhone + ")"
+                    agent: agents[element.idAgente], 
+                    nameClient: element.apellido + " " + element.nombre,
+                    nroCelular: "(" + element.nroCelular + ")"
                 })
                 break;
             case weekDays[1]:
-                key = element.timeEvent.substring(0, 2) + "-1"
+                key = element.horaDeCita.substring(0, 2) + "-1"
                 tempWeekDays[key].push({ 
-                    agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName,
-                    cellPhone: "(" + element.cellPhone + ")"
+                    agent: agents[element.idAgente], 
+                    nameClient: element.apellido + " " + element.nombre,
+                    nroCelular: "(" + element.nroCelular + ")"
                 })
                 break;
             case weekDays[2]:
-                key = element.timeEvent.substring(0, 2) + "-2"
+                key = element.horaDeCita.substring(0, 2) + "-2"
                 tempWeekDays[key].push({ 
-                    agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName,
-                    cellPhone: "(" + element.cellPhone + ")"
+                    agent: agents[element.idAgente], 
+                    nameClient: element.apellido + " " + element.nombre,
+                    nroCelular: "(" + element.nroCelular + ")"
                 })
                 break;
             case weekDays[3]:
-                key = element.timeEvent.substring(0, 2) + "-3"
+                key = element.horaDeCita.substring(0, 2) + "-3"
                 tempWeekDays[key].push({ 
-                    agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName,
-                    cellPhone: "(" + element.cellPhone + ")"
+                    agent: agents[element.idAgente], 
+                    nameClient: element.apellido + " " + element.nombre,
+                    nroCelular: "(" + element.nroCelular + ")"
                 })
                 break;
             case weekDays[4]:
-                key = element.timeEvent.substring(0, 2) + "-4"
+                key = element.horaDeCita.substring(0, 2) + "-4"
                 tempWeekDays[key].push({ 
-                    agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName,
-                    cellPhone: "(" + element.cellPhone + ")"
+                    agent: agents[element.idAgente], 
+                    nameClient: element.apellido + " " + element.nombre,
+                    nroCelular: "(" + element.nroCelular + ")"
                 })
                 break;
             case weekDays[5]:
-                key = element.timeEvent.substring(0, 2) + "-5"
+                key = element.horaDeCita.substring(0, 2) + "-5"
                 tempWeekDays[key].push({ 
-                    agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName,
-                    cellPhone: "(" + element.cellPhone + ")"
+                    agent: agents[element.idAgente], 
+                    nameClient: element.apellido + " " + element.nombre,
+                    nroCelular: "(" + element.nroCelular + ")"
                 })
                 break;
             case weekDays[6]:
-                key = element.timeEvent.substring(0, 2) + "-6"
+                key = element.horaDeCita.substring(0, 2) + "-6"
                 tempWeekDays[key].push({ 
-                    agent: agents[element.idAgent], 
-                    nameClient: element.lastName + " " + element.firstName,
-                    cellPhone: "(" + element.cellPhone + ")"
+                    agent: agents[element.idAgente], 
+                    nameClient: element.apellido + " " + element.nombre,
+                    nroCelular: "(" + element.nroCelular + ")"
                 })
                 break;
         }
@@ -226,7 +226,7 @@ export default function Calendar({ currentDay, setCurrentDay }) {
                                                                     <span key={item.agent.name} className="badge rounded-pill my-1"
                                                                         style={{ "backgroundColor": item.agent.color, "color": "black" }}
                                                                         data-bs-toggle="tooltip" data-bs-html="true" 
-                                                                        title={item.nameClient +" "+ item.cellPhone }>
+                                                                        title={item.nameClient +" "+ item.nroCelular }>
                                                                         {item.agent.name}
                                                                     </span>
                                                                 ))

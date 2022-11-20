@@ -39,10 +39,10 @@ export default function AdminClients() {
                                 <Form.Control type="text" name="clientId" placeholder="Cod" defaultValue="" />
                             </div>
                             <div className="col-md-3">
-                                <Form.Control type="text" name="lastName" placeholder="Apellido" defaultValue="" />
+                                <Form.Control type="text" name="apellido" placeholder="Apellido" defaultValue="" />
                             </div>
                             <div className="col-md-3">
-                                <Form.Control type="text" name="firstName" placeholder="Nombre" defaultValue="" />
+                                <Form.Control type="text" name="nombre" placeholder="Nombre" defaultValue="" />
                             </div>
                             <div className="col-md-2">
                                 <button type="submit" className="btn btn-secondary">Buscar</button>

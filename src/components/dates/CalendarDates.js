@@ -11,8 +11,8 @@ export default function CalendarDates() {
 
     const dateSort = (items) => {
         items.sort(function (a, b) {
-            if (a.timeEvent > b.timeEvent) { return 1 }
-            if (a.timeEvent < b.timeEvent) { return -1 }
+            if (a.horaDeCita > b.horaDeCita) { return 1 }
+            if (a.horaDeCita < b.horaDeCita) { return -1 }
             return 0;
         });
         return items
@@ -53,20 +53,20 @@ export default function CalendarDates() {
                     <div className="accordion" id="acordionDates">
                         {
                             dates.map((element, index) => (
-                                (element.dateEvent === currentDay) ?
+                                (element.fechaDeCita === currentDay) ?
 
                                     <div className="accordion-item">
                                         <h2 className="accordion-header" id={"H" + index}>
                                             <button className="accordion-button collapsed" type="button"
                                                 data-bs-toggle="collapse" data-bs-target={"#C" + index}
                                                 aria-expanded="false" aria-controls={"C" + index}>
-                                                    {"(" + element.timeEvent + ") "} 
+                                                    {"(" + element.horaDeCita + ") "} 
                                                     <span className="badge mx-2" style={{ 
-                                                        "backgroundColor": users.find((x) => x.idUser == element.idAgent).color, 
+                                                        "backgroundColor": users.find((x) => x.idUser == element.idAgente).color, 
                                                         "color": "black" }}>
-                                                        {users.find((x) => x.idUser == element.idAgent).firstName}
+                                                        {users.find((x) => x.idUser == element.idAgente).nombre}
                                                     </span>
-                                                    {element.lastName + ", " + element.firstName}
+                                                    {element.apellido + ", " + element.nombre}
                                             </button>
                                         </h2>
                                         <div id={"C" + index} className="accordion-collapse collapse"
@@ -76,17 +76,17 @@ export default function CalendarDates() {
                                                     <div className="input-group">
                                                         <div className="input-group-text col-md-3">Agente: </div>
                                                         <Form.Control type="text" name="direccion"
-                                                            value={users.find((x) => x.idUser == element.idAgent).firstName} />
-                                                        <Form.Control type="time" name="time" value={element.timeEvent} />
+                                                            value={users.find((x) => x.idUser == element.idAgente).nombre} />
+                                                        <Form.Control type="time" name="time" value={element.horaDeCita} />
                                                     </div>
                                                     <div className="input-group col-md-12">
                                                         <div className="input-group-text col-md-3">Cliente:</div>
                                                         <Form.Control type="text" name="fullName"
-                                                            value={element.firstName + " " + element.lastName} />
+                                                            value={element.nombre + " " + element.apellido} />
                                                     </div>
                                                     <div className="input-group col-md-12">
                                                         <div className="input-group-text col-md-3">Celular:</div>
-                                                        <Form.Control type="text" name="cell" value={element.cellPhone} />
+                                                        <Form.Control type="text" name="cell" value={element.nroCelular} />
                                                     </div>
                                                     <div className="input-group col-md-12">
                                                         <div className="input-group-text col-md-3">email:</div>
@@ -105,7 +105,7 @@ export default function CalendarDates() {
                                                     <hr className="my-3" />
                                                     <div className="col-12">
                                                         <div className="input-group">
-                                                            <div className="input-group-text">{element.codeProp}</div>
+                                                            <div className="input-group-text">{element.codigoProp}</div>
                                                             <Form.Control type="text" name="direccion" value="Dirección de la propiedad a visitar" />
                                                         </div>
                                                     </div>

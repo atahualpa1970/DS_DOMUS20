@@ -31,10 +31,10 @@ export default function Charges(props) {
                         </select>
                     </div>
                     <div className="col-md-2">
-                        <Form.Control type="text" name="lastName" placeholder="Apellido" defaultValue="" />
+                        <Form.Control type="text" name="apellido" placeholder="Apellido" defaultValue="" />
                     </div>
                     <div className="col-md-2">
-                        <Form.Control type="text" name="firstName" placeholder="Nombre" defaultValue="" />
+                        <Form.Control type="text" name="nombre" placeholder="Nombre" defaultValue="" />
                     </div>
                     <div className="col-md-2">
                         <Form.Control type="text" name="companyName" placeholder="Razón Social" defaultValue="" />

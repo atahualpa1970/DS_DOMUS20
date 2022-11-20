@@ -1,46 +1,46 @@
 [
   {
-    "idReclamo": 1,
+    "id": 1,
     "propiedad": 1,
     "clienteQueReclama": 123,
     "secretariaCreadora": 1,
     "prioridad": "alta",
     "descripcion": "Humedad en el techo del baño",
-    "fechaDeReclamo": "2022-11-05",
+    "fechaDeApertura": "2022-11-05",
     "nombreDeContacto": "",
     "telefonoDeContacto": ""
   },
   {
-    "idReclamo": 2,
+    "id": 2,
     "propiedad": 2,
     "clienteQueReclama": 124,
     "secretariaCreadora": 1,
     "prioridad": "media",
     "descripcion": "Pisos flojos",
-    "fechaDeReclamo": "2022-11-05",
+    "fechaDeApertura": "2022-11-05",
     "nombreDeContacto": "",
     "telefonoDeContacto": ""
   },
   {
-    "idReclamo": 3,
+    "id": 3,
     "propiedad": 3,
     "clienteQueReclama": 125,
     "secretariaCreadora": 1,
     "prioridad": "baja",
     "descripcion": "Se cobraron intereses de más en el recibo de Octubre",
-    "fechaDeReclamo": "2022-11-05",
+    "fechaDeApertura": "2022-11-05",
     "nombreDeContacto": "",
     "telefonoDeContacto": ""
   },
   {
-    "idReclamo": 3,
+    "id": 3,
     "propiedad": 5,
     "clienteQueReclama": 127,
     "secretariaCreadora": 1,  
     "prioridad": "alta",
     "descripcion": "Falla en la cerradura de entrada",
-    "fechaDeReclamo": "2022-11-05",
-    "nombreDeContacto": "",
-    "telefonoDeContacto": ""  
+    "fechaDeApertura": "2022-11-05",
+    "nombreDeContacto": "Garcia Marcelo",
+    "telefonoDeContacto": "362-4787878"  
   }
 ]

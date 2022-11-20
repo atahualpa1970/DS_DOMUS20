@@ -12,8 +12,8 @@ export default function ListUsers() {
 
     const noUser = {
         idUser: "",
-        lastName: "",
-        firstName: "",
+        apellido: "",
+        nombre: "",
         dni: "",
         secretary: undefined,
         cashier: undefined,
@@ -23,7 +23,7 @@ export default function ListUsers() {
         seller: undefined,
         marketing: undefined,
         manager: undefined,
-        cellPhone: "",
+        nroCelular: "",
         cellPhone2: "",
         password: "",
         email: ""
@@ -31,8 +31,8 @@ export default function ListUsers() {
 
     const clearUser = {
         idUser: "",
-        lastName: "",
-        firstName: "",
+        apellido: "",
+        nombre: "",
         dni: "",
         secretary: false,
         cashier: false,
@@ -42,7 +42,7 @@ export default function ListUsers() {
         seller: false,
         marketing: false,
         manager: false,
-        cellPhone: "",
+        nroCelular: "",
         cellPhone2: "",
         password: "",
         email: ""
@@ -107,9 +107,9 @@ export default function ListUsers() {
                 <div className="col-md-2">
                     <select name="selectFieldSearch" className="form-select col-md-3">
                         <option value="dni">DNI</option>
-                        <option value="firstName">Nombre</option>
-                        <option value="lastName">apellido</option>
-                        <option value="cellPhone">Celular</option>
+                        <option value="nombre">Nombre</option>
+                        <option value="apellido">apellido</option>
+                        <option value="nroCelular">Celular</option>
                         <option value="email">e-mail</option>
                     </select>
                 </div>
@@ -141,7 +141,7 @@ export default function ListUsers() {
 
                                                         )
                                                     }
-                                                    {element.lastName + ", " + element.firstName + element.typeString}
+                                                    {element.apellido + ", " + element.nombre + element.typeString}
                                                     <img src="../icons/trash.svg" onClick={deleteUser} name={index}
                                                         style={{ float: "right", marginLeft: "10px" }} width="25" height="25" />
                                                     <img src="../icons/pencil.svg" onClick={editUser} name={index}
@@ -171,11 +171,11 @@ export default function ListUsers() {
                                         </div>
                                         <Form.Label className="col-md-2 my-2 alignR">Apellido:</Form.Label>
                                         <div className="col-md-9">
-                                            <Form.Control type="text" name="lastName" defaultValue={selectedUser.lastName} />
+                                            <Form.Control type="text" name="apellido" defaultValue={selectedUser.apellido} />
                                         </div>
                                         <Form.Label className="col-md-2 my-3 alignR">Nombre:</Form.Label>
                                         <div className="col-md-9">
-                                            <Form.Control type="text" name="firstName" defaultValue={selectedUser.firstName} />
+                                            <Form.Control type="text" name="nombre" defaultValue={selectedUser.nombre} />
                                         </div>
 
                                         <Form.Label className="col-md-2 my-2 alignR">SysAdmin:</Form.Label>
@@ -213,7 +213,7 @@ export default function ListUsers() {
 
                                         <Form.Label className="col-md-2 my-2 alignR">Celular:</Form.Label>
                                         <div className="col-md-9">
-                                            <Form.Control type="text" name="cellPhone" defaultValue={selectedUser.cellPhone} />
+                                            <Form.Control type="text" name="nroCelular" defaultValue={selectedUser.nroCelular} />
                                         </div>
                                         <Form.Label className="col-md-2 my-2 alignR">Celular alt:</Form.Label>
                                         <div className="col-md-9">

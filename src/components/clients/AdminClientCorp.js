@@ -22,7 +22,7 @@ export default function AdminClientCorp() {
                     </div>
                     <Form.Label className="col-md-3 my-2 alignR">Teléfono:</Form.Label>
                     <div className="col-md-8">
-                        <Form.Control type="text" name="phoneNumber" defaultValue="" />
+                        <Form.Control type="text" name="nroDeTelefono" defaultValue="" />
                     </div>
                     <Form.Label className="col-md-3 my-2 alignR">e-mail:</Form.Label>
                     <div className="col-md-8">
@@ -30,7 +30,7 @@ export default function AdminClientCorp() {
                     </div>
                     <Form.Label className="col-md-3 my-2 alignR">Direccion Oficina:</Form.Label>
                     <div className="col-md-8">
-                        <Form.Control type="text" name="officeAddress" defaultValue="" />
+                        <Form.Control type="text" name="direccionEmpresa" defaultValue="" />
                     </div>
                     <Form.Label className="col-md-3 my-2 alignR">Agente:</Form.Label>
                     <div className="col-md-8">

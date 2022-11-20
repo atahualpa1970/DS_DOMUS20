@@ -14,7 +14,7 @@ export default function ListDates(props) {
 
     useEffect(() => {
         realEstates.map((element) => (
-            (dates[0].codeProp === element.codeProp) ? setSelectedProp(element) : null
+            (dates[0].codigoProp === element.codigoProp) ? setSelectedProp(element) : null
         ))
     }, [])
 
@@ -22,7 +22,7 @@ export default function ListDates(props) {
     const selectClient = (e) => {
         setSelectedClient(dates[e.target.value])
         realEstates.map((element) => (
-            (dates[e.target.value].codeProp === element.codeProp) ? setSelectedProp(element) : null
+            (dates[e.target.value].codigoProp === element.codigoProp) ? setSelectedProp(element) : null
         ))
     }
 
@@ -37,13 +37,13 @@ export default function ListDates(props) {
                     <form className="row my-2 g-3">
                         <div className="col-md-7">
                             <Form.Control type="text" name="fullName"
-                                value={selectedClient.firstName + " " + selectedClient.lastName} disabled />
+                                value={selectedClient.nombre + " " + selectedClient.apellido} disabled />
                         </div>
                         <div className="col-md-5">
                             <Form.Control type="date" name="date" defaultValue="" />
                         </div>
                         <div className="col-md-7">
-                            <Form.Control type="text" name="cell" value={selectedClient.cellPhone} disabled />
+                            <Form.Control type="text" name="cell" value={selectedClient.nroCelular} disabled />
                         </div>
                         <div className="col-md-5">
                             <Form.Control type="time" name="time" defaultValue="" />
@@ -62,7 +62,7 @@ export default function ListDates(props) {
                         <div className="col-12">
                             <div className="input-group">
                                 <div className="input-group-text">Observaciones</div>
-                                <Form.Control type="text" name="comments" value={selectedClient.comments} disabled />
+                                <Form.Control type="text" name="comentarios" value={selectedClient.comentarios} disabled />
                             </div>
                         </div>
                         <hr />
@@ -105,7 +105,7 @@ export default function ListDates(props) {
                                 dates.map((element, index) => (
                                     <li className="list-group-item list-group-item-action" key={index} value={index}
                                         onClick={selectClient}>
-                                        {element.lastName + ", " + element.firstName + " (" + element.cellPhone + ")"}
+                                        {element.apellido + ", " + element.nombre + " (" + element.nroCelular + ")"}
                                     </li>
                                 ))
                             }

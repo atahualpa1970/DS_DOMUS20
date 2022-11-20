@@ -10,7 +10,7 @@ export default function RequestDate() {
     const realEstates = require("../data/propiedades.json")
     var selectedProp = {}
     realEstates.map((prop) => (
-        (prop.idPropiedad.toString() === params.idPropiedad) ? selectedProp = prop : null
+        (prop.id.toString() === params.idPropiedad) ? selectedProp = prop : null
     ))
 
     return (
@@ -20,7 +20,7 @@ export default function RequestDate() {
                 <br /><br />
                 <div className="card col-md-4">
                     <div className="card-header">
-                        <div id={"carousel" + selectedProp.idPropiedad} className="carousel slide" data-bs-ride="carousel">
+                        <div id={"carousel" + selectedProp.id} className="carousel slide" data-bs-ride="carousel">
                             <div className="carousel-inner">
                                 {selectedProp.fotos.map((foto, index) =>
                                     <div className={(index === 0) ? "carousel-item active" : "carousel-item"} key={index}>
@@ -30,11 +30,11 @@ export default function RequestDate() {
                                     </div>
                                 )}
                             </div>
-                            <button className="carousel-control-prev" type="button" data-bs-target={"#carousel" + selectedProp.idPropiedad} data-bs-slide="prev">
+                            <button className="carousel-control-prev" type="button" data-bs-target={"#carousel" + selectedProp.id} data-bs-slide="prev">
                                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span className="visually-hidden">Anterior</span>
                             </button>
-                            <button className="carousel-control-next" type="button" data-bs-target={"#carousel" + selectedProp.idPropiedad} data-bs-slide="next">
+                            <button className="carousel-control-next" type="button" data-bs-target={"#carousel" + selectedProp.id} data-bs-slide="next">
                                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span className="visually-hidden">Siguiente</span>
                             </button>
@@ -42,7 +42,7 @@ export default function RequestDate() {
 
                     </div>
                     <div className="card-body text-center">
-                        <h5 className="card-title">{selectedProp.codeProp + " - " + selectedProp.direccion}</h5>
+                        <h5 className="card-title">{selectedProp.codigoProp + " - " + selectedProp.direccion}</h5>
                         <div className="card">
                             <ul className="list-group list-group-flush">
                                 <li className="list-group-item">Dormitorios: {selectedProp.habitaciones}</li>
@@ -57,15 +57,15 @@ export default function RequestDate() {
                     <form className="row my-2 g-3">
                         <div className="col-md-4">
                             <label className="form-label">Nombre</label>
-                            <input type="text" className="form-control" id="firstName" />
+                            <input type="text" className="form-control" id="nombre" />
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Apellido</label>
-                            <input type="text" className="form-control" id="lastName" />
+                            <input type="text" className="form-control" id="apellido" />
                         </div>
                         <div className="col-md-4">
                             <label className="form-label">Celular</label>
-                            <input type="text" className="form-control" id="cellPhone" placeholder="+54-123-456789" />
+                            <input type="text" className="form-control" id="nroCelular" placeholder="+54-123-456789" />
                         </div>
                         <hr />
                         <div className="col-12">

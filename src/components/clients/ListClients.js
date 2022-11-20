@@ -26,12 +26,12 @@ export default function ListClients() {
                     </div>
                     {(selectedClientType === "particular") ?
                         <div className="col-md-2">
-                            <Form.Control type="text" name="lastName" placeholder="Apellido" defaultValue="" />
+                            <Form.Control type="text" name="apellido" placeholder="Apellido" defaultValue="" />
                         </div>
                         : null}
                     {(selectedClientType === "particular") ?
                         <div className="col-md-2">
-                            <Form.Control type="text" name="firstName" placeholder="Nombre" defaultValue="" />
+                            <Form.Control type="text" name="nombre" placeholder="Nombre" defaultValue="" />
                         </div>
                         : null}
                     {(selectedClientType === "corporativo") ?
@@ -66,11 +66,11 @@ export default function ListClients() {
                         <div className="row col-md-6">
                             <Form.Label className="col-md-3 my-2 alignR">Apellido:</Form.Label>
                             <div className="col-md-8">
-                                <Form.Control type="text" name="lastName" defaultValue="" />
+                                <Form.Control type="text" name="apellido" defaultValue="" />
                             </div>
                             <Form.Label className="col-md-3 my-2 alignR">Nombre:</Form.Label>
                             <div className="col-md-8">
-                                <Form.Control type="text" name="firstName" defaultValue="" />
+                                <Form.Control type="text" name="nombre" defaultValue="" />
                             </div>
                             <Form.Label className="col-md-3 my-2 alignR">DNI:</Form.Label>
                             <div className="col-md-8">
@@ -82,11 +82,11 @@ export default function ListClients() {
                             </div>
                             <Form.Label className="col-md-3 my-2 alignR">Fecha Nacimiento:</Form.Label>
                             <div className="col-md-8">
-                                <Form.Control type="date" name="birthdate" defaultValue="" />
+                                <Form.Control type="date" name="fechaDeNacimiento" defaultValue="" />
                             </div>
                             <Form.Label className="col-md-3 my-2 alignR">Celular:</Form.Label>
                             <div className="col-md-8">
-                                <Form.Control type="text" name="cellPhone" defaultValue="" />
+                                <Form.Control type="text" name="nroCelular" defaultValue="" />
                             </div>
                             <Form.Label className="col-md-3 my-2 alignR">e-mail:</Form.Label>
                             <div className="col-md-8">

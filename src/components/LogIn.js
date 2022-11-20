@@ -60,11 +60,11 @@ export default function WebHome() {
                     onSubmit={handleSubmit} >
                     <div className="col-md-12">
                         <label className="form-label">Usuario:</label>
-                        <input type="text" className="form-control" id="firstName" />
+                        <input type="text" className="form-control" id="nombre" />
                     </div>
                     <div className="col-md-12">
                         <label className="form-label">Contraseña:</label>
-                        <input type="password" className="form-control" id="lastName" />
+                        <input type="password" className="form-control" id="apellido" />
                     </div>
                     <div className="col-md-12 d-flex justify-content-center">
                         <button type="submit" className="btn btn-primary">Login</button>

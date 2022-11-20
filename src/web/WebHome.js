@@ -48,13 +48,13 @@ export default function WebHome() {
         <div className="row justify-content-center">
           <h2 className="row justify-content-center">Propiedades destacadas</h2>
           {realEstates.map(element => (element.destacada)
-            ? <div className="col-md-4 p-2 " key={element.idPropiedad}>
+            ? <div className="col-md-4 p-2 " key={element.id}>
               <div className="card">
                 <div className="card-header">
-                  <h5 className="card-title">{element.codeProp + " - " + element.direccion}</h5>
+                  <h5 className="card-title">{element.codigoProp + " - " + element.direccion}</h5>
                 </div>
                 <div className="card-body row flex">
-                  <div id={"carousel" + element.idPropiedad} className="carousel slide col-md-6" data-bs-ride="carousel">
+                  <div id={"carousel" + element.id} className="carousel slide col-md-6" data-bs-ride="carousel">
                     <div className="carousel-inner">
                       {element.fotos.map((foto , index) =>
                         <div className={(index === 0) ? "carousel-item active" : "carousel-item"} key={index}>
@@ -64,11 +64,11 @@ export default function WebHome() {
                         </div>
                       )}
                     </div>
-                    <button className="carousel-control-prev" type="button" data-bs-target={"#carousel" + element.idPropiedad} data-bs-slide="prev">
+                    <button className="carousel-control-prev" type="button" data-bs-target={"#carousel" + element.id} data-bs-slide="prev">
                       <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                       <span className="visually-hidden">Anterior</span>
                     </button>
-                    <button className="carousel-control-next" type="button" data-bs-target={"#carousel" + element.idPropiedad} data-bs-slide="next">
+                    <button className="carousel-control-next" type="button" data-bs-target={"#carousel" + element.id} data-bs-slide="next">
                       <span className="carousel-control-next-icon" aria-hidden="true"></span>
                       <span className="visually-hidden">Siguiente</span>
                     </button>
@@ -80,7 +80,7 @@ export default function WebHome() {
                       <li className="list-group-item">{element.garage}</li>
                     </ul>
                     <button type="button" className="btn btn-primary btn-sm my-3"
-                      value={element.idPropiedad} onClick={requestDate}>Ver</button>
+                      value={element.id} onClick={requestDate}>Ver</button>
                   </div>
 
                 </div>

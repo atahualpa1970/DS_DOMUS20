@@ -1,38 +1,38 @@
 [
     {
-        "lastName": "Otto",
-        "firstName": "Mark",
-        "cellPhone": "3624-112233",
+        "apellido": "Otto",
+        "nombre": "Mark",
+        "nroCelular": "3624-112233",
         "email": "ottomark@gmail.com",
-        "codeProp": "D123",
-        "addressProp": "Calle 27 N°456",
-        "comments": "Lunes a Viernes de 17 a 20"
+        "codigoProp": "D123",
+        "direccion": "Calle 27 N°456",
+        "comentarios": "Lunes a Viernes de 17 a 20"
     },
     {
-        "lastName": "Thornton",
-        "firstName": "Jacob",
-        "cellPhone": "3624-445566",
+        "apellido": "Thornton",
+        "nombre": "Jacob",
+        "nroCelular": "3624-445566",
         "email": "jthotnton@gmail.com",
-        "codeProp": "D123",
-        "addressProp": "Calle 27 N°456",
-        "comments": "Lunes a Viernes de 11 a 14"
+        "codigoProp": "D123",
+        "direccion": "Calle 27 N°456",
+        "comentarios": "Lunes a Viernes de 11 a 14"
     },
     {
-        "lastName": "Mullen",
-        "firstName": "Larry",
-        "cellPhone": "3624-778899",
+        "apellido": "Mullen",
+        "nombre": "Larry",
+        "nroCelular": "3624-778899",
         "email": "larrymullenjr@u2.com",
-        "codeProp": "D189",
-        "addressProp": "Calle 13 N°897",
-        "comments": "Sabados de mañana"
+        "codigoProp": "D189",
+        "direccion": "Calle 13 N°897",
+        "comentarios": "Sabados de mañana"
     },
     {
-        "lastName": "Smith",
-        "firstName": "Robert",
-        "cellPhone": "3624-665570",
+        "apellido": "Smith",
+        "nombre": "Robert",
+        "nroCelular": "3624-665570",
         "email": "rsmith@thecure.com",
-        "codeProp": "D221",
-        "addressProp": "Calle 123 s/n",
-        "comments": "Lunes o Jueves de 13 a 15"
+        "codigoProp": "D221",
+        "direccion": "Calle 123 s/n",
+        "comentarios": "Lunes o Jueves de 13 a 15"
     }
 ]

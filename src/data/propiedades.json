@@ -1,7 +1,7 @@
 [
     {
-        "idPropiedad": 1,
-        "codeProp": "D123",
+        "id": 1,
+        "codigoProp": "D123",
         "alquiler": true,
         "venta": true,
         "activa": true,
@@ -11,11 +11,11 @@
         "habitaciones": 2,
         "baños": 1,
         "garage": "Cochera cubierta",
-        "fotos": ["Depto02.jpeg", "fotoss01.jpeg"]
+        "fotos": ["Depto02.jpeg", "images01.jpeg"]
     },
     {
-        "idPropiedad": 2,
-        "codeProp": "D189",
+        "id": 2,
+        "codigoProp": "D189",
         "alquiler": true,
         "venta": false,
         "activa": true,
@@ -28,8 +28,8 @@
         "fotos": ["Depto03.jpg"]
     },
     {
-        "idPropiedad": 3,
-        "codeProp": "D221",
+        "id": 3,
+        "codigoProp": "D221",
         "alquiler": true,
         "venta": true,
         "activa": true,
@@ -42,8 +42,8 @@
         "fotos": ["images04.jpeg", "images02.jpeg"]
     },
     {
-        "idPropiedad": 4,
-        "codeProp": "C121",
+        "id": 4,
+        "codigoProp": "C121",
         "alquiler": false,
         "venta": true,
         "activa": true,
@@ -56,8 +56,8 @@
         "fotos": ["Casa01.jpg"]
     },
     {
-        "idPropiedad": 5,
-        "codeProp": "C121",
+        "id": 5,
+        "codigoProp": "C121",
         "alquiler": true,
         "venta": false,
         "activa": true,
@@ -70,8 +70,8 @@
         "fotos": ["Casa02.jpeg", "Casa03.jpeg"]
     },
     {
-        "idPropiedad": 6,
-        "codeProp": "C122",
+        "id": 6,
+        "codigoProp": "C122",
         "alquiler": true,
         "venta": false,
         "activa": true,
