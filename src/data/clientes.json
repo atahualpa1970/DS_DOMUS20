@@ -1,7 +1,7 @@
 [
   {
-    "idClient": 123,
-    "clientType": "Particular",
+    "idCliente": 123,
+    "tipoDeCliente": "Particular",
     "lastName": "Benitez",
     "firstName": "Marta",
     "dni": "40404404",
@@ -11,8 +11,8 @@
     "email": "mbenitez001@gmail.com"
   },
   {
-    "idClient": 124,
-    "clientType": "Particular",
+    "idCliente": 124,
+    "tipoDeCliente": "Particular",
     "lastName": "Gutierrez",
     "firstName": "Sergio",
     "dni": "25013013",
@@ -22,8 +22,8 @@
     "email": "sgutierrez001@gmail.com"
   },
   {
-    "idClient": 125,
-    "clientType": "Particular",
+    "idCliente": 125,
+    "tipoDeCliente": "Particular",
     "lastName": "Herrera",
     "firstName": "Ricardo",
     "dni": "38012345",
@@ -33,8 +33,8 @@
     "email": "rherrera001@gmail.com"
   },
   {
-    "idClient": 126,
-    "clientType": "Corporativo",
+    "idCliente": 126,
+    "tipoDeCliente": "Corporativo",
     "companyName": "Super Autos",
     "owners": "Claudio Fernandez, Horacio Perez",
     "cuit": "33-98050506-1",
@@ -44,8 +44,8 @@
     "seller": 2
   },
   {
-    "idClient": 127,
-    "clientType": "Particular",
+    "idCliente": 127,
+    "tipoDeCliente": "Particular",
     "lastName": "Garcia",
     "firstName": "Liliana",
     "dni": "42808080",
@@ -55,8 +55,8 @@
     "email": "lgarcia005@gmail.com"
   },
   {
-    "idClient": 128,
-    "clientType": "Particular",
+    "idCliente": 128,
+    "tipoDeCliente": "Particular",
     "lastName": "Aguirre",
     "firstName": "Pedro Luis",
     "dni": "42900900",
@@ -66,8 +66,8 @@
     "email": "plaguirre001@gmail.com"
   },
   {
-    "idClient": 129,
-    "clientType": "Corporativo",
+    "idCliente": 129,
+    "tipoDeCliente": "Corporativo",
     "companyName": "Motorepuestos 2",
     "owners": "Juana Suarez, Miguel Medina",
     "cuit": "33-98060708-2",
@@ -77,8 +77,8 @@
     "seller": 2
   },
   {
-    "idClient": 130,
-    "clientType": "Particular",
+    "idCliente": 130,
+    "tipoDeCliente": "Particular",
     "lastName": "Benitez",
     "firstName": "Ricardo",
     "dni": "38002003",

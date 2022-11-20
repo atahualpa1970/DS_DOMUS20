@@ -12,8 +12,8 @@ export default function ListProp() {
                 <form className="row col-md-9 my-0 g-0">
                     <div className="col-md-3">
                         <select name="contract" className="form-select">
-                            <option value="rental">Alquiler</option>
-                            <option value="sale">Venta</option>
+                            <option value="alquiler">Alquiler</option>
+                            <option value="venta">Venta</option>
                         </select>
                     </div>
                     <div className="col-md-3">
@@ -74,7 +74,7 @@ export default function ListProp() {
 
                         <Form.Label className="col-md-1 my-2 alignR">Dirección:</Form.Label>
                         <div className="col-md-5">
-                            <Form.Control type="text" name="address" defaultValue="" />
+                            <Form.Control type="text" name="direccion" defaultValue="" />
                         </div>
                         <Form.Label className="col-md-2 my-2 alignR">Barrio:</Form.Label>
                         <div className="col-md-3">

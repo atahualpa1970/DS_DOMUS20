@@ -6,7 +6,7 @@ import { Form } from 'react-bootstrap'
 export default function ListDates(props) {
 
     const dates = require("../../data/requestDates.json")
-    const realEstates = require("../../data/properties.json")
+    const realEstates = require("../../data/propiedades.json")
 
     const [selectedClient, setSelectedClient] = useState(dates[0]);
     const [selectedProp, setSelectedProp] = useState(realEstates[0]);
@@ -14,7 +14,7 @@ export default function ListDates(props) {
 
     useEffect(() => {
         realEstates.map((element) => (
-            (dates[0].codeProp === element.code) ? setSelectedProp(element) : null
+            (dates[0].codeProp === element.codeProp) ? setSelectedProp(element) : null
         ))
     }, [])
 
@@ -22,7 +22,7 @@ export default function ListDates(props) {
     const selectClient = (e) => {
         setSelectedClient(dates[e.target.value])
         realEstates.map((element) => (
-            (dates[e.target.value].codeProp === element.code) ? setSelectedProp(element) : null
+            (dates[e.target.value].codeProp === element.codeProp) ? setSelectedProp(element) : null
         ))
     }
 
@@ -70,19 +70,19 @@ export default function ListDates(props) {
                             <label className="form-label">Propiedad a visitar</label>
                             <div className="input-group">
                                 <div className="input-group-text">Tipo: </div>
-                                <Form.Control type="text" name="type" value={selectedProp.type} disabled />
+                                <Form.Control type="text" name="type" value={selectedProp.tipoDePropiedad} disabled />
                             </div>
                             <div className="input-group">
                                 <div className="input-group-text">Direccion: </div>
-                                <Form.Control type="text" name="address" value={selectedProp.address} disabled />
+                                <Form.Control type="text" name="direccion" value={selectedProp.direccion} disabled />
                             </div>
                             <div className="input-group">
                                 <div className="input-group-text">Hab: </div>
-                                <Form.Control type="text" name="room" value={selectedProp.room} disabled />
+                                <Form.Control type="text" name="habitaciones" value={selectedProp.habitaciones} disabled />
                             </div>
                             <div className="input-group">
                                 <div className="input-group-text">Baños: </div>
-                                <Form.Control type="text" name="bathroom" value={selectedProp.bathroom} disabled />
+                                <Form.Control type="text" name="baños" value={selectedProp.baños} disabled />
                             </div>
                             <div className="input-group">
                                 <div className="input-group-text">Garage: </div>

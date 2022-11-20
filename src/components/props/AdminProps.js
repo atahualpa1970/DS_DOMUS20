@@ -12,8 +12,8 @@ export default function AdminProp() {
                 <form className="row col-md-9 my-0 g-0">
                     <div className="col-md-3">
                         <select name="contract" className="form-select">
-                            <option value="rental">Alquiler</option>
-                            <option value="sale">Venta</option>
+                            <option value="alquiler">Alquiler</option>
+                            <option value="venta">Venta</option>
                         </select>
                     </div>
                     <div className="col-md-3">

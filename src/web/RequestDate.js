@@ -7,10 +7,10 @@ import { useParams } from 'react-router-dom';
 export default function RequestDate() {
 
     const params = useParams()
-    const realEstates = require("../data/properties.json")
+    const realEstates = require("../data/propiedades.json")
     var selectedProp = {}
     realEstates.map((prop) => (
-        (prop.idProp.toString() === params.idProp) ? selectedProp = prop : null
+        (prop.idPropiedad.toString() === params.idPropiedad) ? selectedProp = prop : null
     ))
 
     return (
@@ -20,21 +20,21 @@ export default function RequestDate() {
                 <br /><br />
                 <div className="card col-md-4">
                     <div className="card-header">
-                        <div id={"carousel" + selectedProp.idProp} className="carousel slide" data-bs-ride="carousel">
+                        <div id={"carousel" + selectedProp.idPropiedad} className="carousel slide" data-bs-ride="carousel">
                             <div className="carousel-inner">
-                                {selectedProp.image.map((image, index) =>
+                                {selectedProp.fotos.map((foto, index) =>
                                     <div className={(index === 0) ? "carousel-item active" : "carousel-item"} key={index}>
-                                        <img src={"../images/" + image}
+                                        <img src={"../images/" + foto}
                                             style={{ alignSelf: "center", width: "400px", height: "250px" }}
-                                            alt={image} />
+                                            alt={foto} />
                                     </div>
                                 )}
                             </div>
-                            <button className="carousel-control-prev" type="button" data-bs-target={"#carousel" + selectedProp.idProp} data-bs-slide="prev">
+                            <button className="carousel-control-prev" type="button" data-bs-target={"#carousel" + selectedProp.idPropiedad} data-bs-slide="prev">
                                 <span className="carousel-control-prev-icon" aria-hidden="true"></span>
                                 <span className="visually-hidden">Anterior</span>
                             </button>
-                            <button className="carousel-control-next" type="button" data-bs-target={"#carousel" + selectedProp.idProp} data-bs-slide="next">
+                            <button className="carousel-control-next" type="button" data-bs-target={"#carousel" + selectedProp.idPropiedad} data-bs-slide="next">
                                 <span className="carousel-control-next-icon" aria-hidden="true"></span>
                                 <span className="visually-hidden">Siguiente</span>
                             </button>
@@ -42,11 +42,11 @@ export default function RequestDate() {
 
                     </div>
                     <div className="card-body text-center">
-                        <h5 className="card-title">{selectedProp.code + " - " + selectedProp.address}</h5>
+                        <h5 className="card-title">{selectedProp.codeProp + " - " + selectedProp.direccion}</h5>
                         <div className="card">
                             <ul className="list-group list-group-flush">
-                                <li className="list-group-item">Dormitorios: {selectedProp.room}</li>
-                                <li className="list-group-item">Baños: {selectedProp.bathroom}</li>
+                                <li className="list-group-item">Dormitorios: {selectedProp.habitaciones}</li>
+                                <li className="list-group-item">Baños: {selectedProp.baños}</li>
                                 <li className="list-group-item">{selectedProp.garage}</li>
                             </ul>
                         </div>
@@ -72,7 +72,7 @@ export default function RequestDate() {
                             <label className="form-label">Propiedad a visitar</label>
                             <div className="input-group">
                                 <div className="input-group-text">Cod:AA-324</div>
-                                <input type="text" className="form-control" id="address" placeholder="Siempreviva 742" disabled />
+                                <input type="text" className="form-control" id="direccion" placeholder="Siempreviva 742" disabled />
                             </div>
                         </div>
                         <div className="col-12">

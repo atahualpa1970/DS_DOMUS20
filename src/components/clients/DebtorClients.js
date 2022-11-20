@@ -18,7 +18,7 @@ export default function DebtorClients() {
                 <h3 className="col-md-3">Deudores</h3>
                 <form className="row col-md-9 my-0 g-0">
                     <div className="col-md-2">
-                        <select name="clientType" className="form-select col-md-3" onChange={selectClientType}>
+                        <select name="tipoDeCliente" className="form-select col-md-3" onChange={selectClientType}>
                             <option value="">Tipo de cliente...</option>
                             <option value="particular">Particular</option>
                             <option value="corporativo">Corporativo</option>

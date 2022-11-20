@@ -20,7 +20,7 @@ export default function CalendarDates() {
 
     const activeAction = require("../../data/actionPermissions.json")
     const users = require("../../data/users.json")
-    const realEstates = require("../../data/properties.json")
+    const realEstates = require("../../data/propiedades.json")
     console.log("REALSTATES: ", realEstates)
     var dates = require("../../data/confirmDates.json")
     dates = dateSort(dates)
@@ -75,7 +75,7 @@ export default function CalendarDates() {
                                                 <form className="row my-2 g-1">
                                                     <div className="input-group">
                                                         <div className="input-group-text col-md-3">Agente: </div>
-                                                        <Form.Control type="text" name="address"
+                                                        <Form.Control type="text" name="direccion"
                                                             value={users.find((x) => x.idUser == element.idAgent).firstName} />
                                                         <Form.Control type="time" name="time" value={element.timeEvent} />
                                                     </div>
@@ -106,7 +106,7 @@ export default function CalendarDates() {
                                                     <div className="col-12">
                                                         <div className="input-group">
                                                             <div className="input-group-text">{element.codeProp}</div>
-                                                            <Form.Control type="text" name="address" value="Dirección de la propiedad a visitar" />
+                                                            <Form.Control type="text" name="direccion" value="Dirección de la propiedad a visitar" />
                                                         </div>
                                                     </div>
                                                     <div className={"col-6 d-flex justify-content-center"+activeAction[loggedUser.role].changeDate}>

@@ -39,7 +39,7 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<WebHome />} />
-                    <Route path="requestDate/:idProp" element={<RequestDate />} />
+                    <Route path="requestDate/:idPropiedad" element={<RequestDate />} />
                     <Route path="app/" element={<LogIn />} />
 
                     <Route path="app/listDates" element={<ListDates />} />

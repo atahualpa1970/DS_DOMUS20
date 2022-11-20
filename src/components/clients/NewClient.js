@@ -24,7 +24,7 @@ export default function NewClient() {
             <div className="row fluid col-md-12 mx-0 my-0 py-3" id="box1">
                 <h3>Nuevo Cliente</h3>
                 <div className="col-md-3">
-                    <select name="clientType" className="form-select col-md-3" onChange={selectClientType}>
+                    <select name="tipoDeCliente" className="form-select col-md-3" onChange={selectClientType}>
                         <option value="particular">Cliente Particular</option>
                         <option value="corporativo">Cliente Corporativo</option>
                     </select>

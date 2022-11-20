@@ -6,7 +6,7 @@ import { Form } from 'react-bootstrap';
 export default function NewDate() {
 
     const dates = require("../../data/confirmDates.json")
-    const realEstates = require("../../data/properties.json")
+    const realEstates = require("../../data/propiedades.json")
 
     const [selectedClient, setSelectedClient] = useState(dates[0]);
     const [selectedProp, setSelectedProp] = useState(realEstates[0]);
@@ -14,7 +14,7 @@ export default function NewDate() {
 
     useEffect(() => {
         realEstates.map((element) => (
-            (dates[0].codeProp === element.code) ? setSelectedProp(element) : null
+            (dates[0].codeProp === element.codeProp) ? setSelectedProp(element) : null
         ))
     }, [])
 
@@ -22,7 +22,7 @@ export default function NewDate() {
     const selectClient = (e) => {
         setSelectedClient(dates[e.target.value])
         realEstates.map((element) => (
-            (dates[e.target.value].codeProp === element.code) ? setSelectedProp(element) : null
+            (dates[e.target.value].codeProp === element.codeProp) ? setSelectedProp(element) : null
         ))
     }
 
@@ -77,8 +77,8 @@ export default function NewDate() {
                             <form className="row my-0 g-0">
                                 <div className="col-md-3">
                                     <select name="operation" className="form-select">
-                                        <option value="rental">Alquiler</option>
-                                        <option value="sale">Venta</option>
+                                        <option value="alquiler">Alquiler</option>
+                                        <option value="venta">Venta</option>
                                     </select>
                                 </div>
                                 <div className="col-md-3">
@@ -107,17 +107,17 @@ export default function NewDate() {
                                         <div className="row col-md-12 my-0 g-0">
                                             <div class="col-md-1">
                                                 <input class="form-check-input" type="radio" 
-                                                    value={element.code} name="selectedProp" />
+                                                    value={element.codeProp} name="selectedProp" />
                                             </div>
                                             <div class="col-md-11">
                                                 <button class="btn btn-light col-md-12" type="button"
-                                                    data-bs-toggle="collapse" data-bs-target={"#" + element.code}
-                                                    aria-expanded="false" aria-controls={element.code}>
-                                                    {element.code + ": " + element.address}
+                                                    data-bs-toggle="collapse" data-bs-target={"#" + element.codeProp}
+                                                    aria-expanded="false" aria-controls={element.codeProp}>
+                                                    {element.codeProp + ": " + element.direccion}
                                                 </button>
-                                                <div class="collapse col-md-12" id={element.code}>
+                                                <div class="collapse col-md-12" id={element.codeProp}>
                                                     <div class="card card-body">
-                                                        {"Hab: " + element.room + " Baños: " + element.bathroom
+                                                        {"Hab: " + element.habitaciones + " Baños: " + element.baños
                                                             + " Garage: " + element.garage
                                                         }
                                                     </div>

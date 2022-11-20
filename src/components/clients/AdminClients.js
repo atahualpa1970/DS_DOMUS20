@@ -27,7 +27,7 @@ export default function AdminClients() {
                 <h3>Administrar Clientes</h3>
                 <form className="form-inline row col-md-12 justify-content-center">
                     <div className="col-md-3">
-                        <select name="clientType" className="form-select col-md-3" onChange={selectClientType}>
+                        <select name="tipoDeCliente" className="form-select col-md-3" onChange={selectClientType}>
                             <option value="particular">Cliente Particular</option>
                             <option value="corporativo">Cliente Corporativo</option>
                         </select>

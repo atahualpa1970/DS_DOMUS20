@@ -17,7 +17,7 @@ export default function CashClosing() {
             <div className="row fluid col-md-12 mx-0 my-0 py-3" id="box1">
                 <h3 className="col-md-3">Cierre de Caja</h3>
                 <div className="col-md-3">
-                    <select name="clientType" className="form-select col-md-3">
+                    <select name="tipoDeCliente" className="form-select col-md-3">
                         <option value="">Tipo de movimiento...</option>
                         <option value="input">Entrada</option>
                         <option value="output">Salida</option>

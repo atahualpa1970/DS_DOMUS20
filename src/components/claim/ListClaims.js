@@ -2,37 +2,37 @@ import React, { useState, useEffect } from 'react'
 import Navigation from '../Navigation'
 import { Form } from 'react-bootstrap'
 
-const claims = require("../../data/claims.json")
-const props = require("../../data/properties.json")
-const clients = require("../../data/clients.json")
-const propCli = require("../../data/relPropCli.json")
+const claims = require("../../data/reclamos.json")
+const props = require("../../data/propiedades.json")
+const clients = require("../../data/clientes.json")
+const propCli = require("../../data/cliente_propiedad.json")
 
 export default function ListClaims() {
 
   claims.map((element) => {
-    element.address = props.find(val => val.idProp == element.idProp).address
-    element.lastName = clients.find(val => val.idClient == element.idClient).lastName
-    element.firstName = clients.find(val => val.idClient == element.idClient).firstName
+    element.direccion = props.find(val => val.idPropiedad == element.propiedad).direccion
+    element.lastName = clients.find(val => val.idCliente == element.clienteQueReclama).lastName
+    element.firstName = clients.find(val => val.idCliente == element.clienteQueReclama).firstName
   })
 
   const clearClaim = {
-    idClaim: null,
-    idClient: null,
-    idProp: null,
-    priority: "",
-    descript: "",
+    propiedad: null,
+    clienteQueReclama: null,
+    propiedad: null,
+    prioridad: "",
+    descripcion: "",
     fecha: "",
-    nameContact: "",
-    cellPhoneContact: "" 
+    nombreDeContacto: "",
+    telefonoDeContacto: "" 
   }
 
   const [selectedClaim, setSelectedClaim] = useState(clearClaim);
   const [selectedTypes, setSelectedTypes] = useState();
 
   const claimPriority = {
-    low: { title: "Baja", color: "yellow" },
-    medium: { title: "Media", color: "orange" },
-    high: { title: "Alta", color: "red" }
+    baja: { title: "Baja", color: "yellow" },
+    media: { title: "Media", color: "orange" },
+    alta: { title: "Alta", color: "red" }
   }
 
   const selectTypes = (e) => {
@@ -46,7 +46,7 @@ export default function ListClaims() {
   const unselectUser = () => {
     setSelectedClaim(clearClaim)
     document.getElementById("claimForm").reset();
-    document.getElementById("idProp").focus()
+    document.getElementById("propiedad").focus()
   }
 
   const editUser = (e) => {
@@ -54,44 +54,44 @@ export default function ListClaims() {
   }
 
   const searchProp = (e) => {
-    const prop = props.find(val => val.idProp == e.target.value)
-    if (prop) document.getElementById("address").value = prop.address
+    const prop = props.find(val => val.idPropiedad == e.target.value)
+    if (prop) document.getElementById("direccion").value = prop.direccion
     else { console.log("PROP: ", prop); unselectUser() }
   }
 
   const searchClientId = (e) => {
-    const client = clients.find(val => val.idClient == e.target.value)
+    const client = clients.find(val => val.idCliente == e.target.value)
     if (client) {
       document.getElementById("lastName").value = client.lastName
       document.getElementById("firstName").value = client.firstName
-      const relPropCli = propCli.find(val => val.idClient == client.idClient)
-      const prop = props.find(val => val.idProp == relPropCli.idProp)
-      document.getElementById("idProp").value = prop.idProp
-      document.getElementById("address").value = prop.address
+      const relPropCli = propCli.find(val => val.idCliente == client.idCliente)
+      const prop = props.find(val => val.idPropiedad == relPropCli.idPropiedad)
+      document.getElementById("propiedad").value = prop.idPropiedad
+      document.getElementById("direccion").value = prop.direccion
     }
     else unselectUser()
   }
 
   const searchClientName = (e) => {
-    const prop = props.find(val => val.idProp == e.target.value)
-    if (prop) document.getElementById("address").value = prop.address
+    const prop = props.find(val => val.idPropiedad == e.target.value)
+    if (prop) document.getElementById("direccion").value = prop.direccion
     else { console.log("PROP: ", prop); unselectUser() }
   }
 
   const handleSubmit = (e) => {
     let max = 0
-    claims.map((element) => ((element.idClaim > max) ? max = element.idClaim : null))
+    claims.map((element) => ((element.propiedad > max) ? max = element.propiedad : null))
     const inputForm = e.target.form.elements
     console.log("EVENT: ", inputForm)
     const newClaim = {
-      idClaim: max + 1,
-      idClient: inputForm.idClient.value,
-      idProp: inputForm.idProp.value,
-      priority: inputForm.priority.value,
-      descript: inputForm.descript.value,
-      dateClaim: inputForm.dateClaim.value,
-      nameContact: inputForm.nameContact.value,
-      cellPhoneContact: inputForm.cellPhoneContact.value
+      propiedad: max + 1,
+      clienteQueReclama: inputForm.clienteQueReclama.value,
+      propiedad: inputForm.propiedad.value,
+      prioridad: inputForm.prioridad.value,
+      descripcion: inputForm.descripcion.value,
+      fechaDeReclamo: inputForm.fechaDeReclamo.value,
+      nombreDeContacto: inputForm.nombreDeContacto.value,
+      telefonoDeContacto: inputForm.telefonoDeContacto.value
     }
     console.log("NEWCLAIM: ", newClaim)
     claims.push(newClaim)
@@ -100,7 +100,7 @@ export default function ListClaims() {
   }
 
   const today = new Date()
-  const dateClaim = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
+  const fechaDeReclamo = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
 
   return (
     <div>
@@ -109,10 +109,10 @@ export default function ListClaims() {
         <h3 className="col-md-3">Gestión de Reclamos</h3>
         <div className="col-md-2">
           <select name="selectPriority" className="form-select" onChange={selectTypes}>
-            <option value="">Todos los tipos...</option>
-            <option value="low">{claimPriority.low.title}</option>
-            <option value="medium">{claimPriority.medium.title}</option>
-            <option value="high">{claimPriority.high.title}</option>
+            <option value="">Prioridad... (todas)</option>
+            <option value="baja">{claimPriority.baja.title}</option>
+            <option value="media">{claimPriority.media.title}</option>
+            <option value="alta">{claimPriority.alta.title}</option>
           </select>
         </div>
         <div className="col-md-1"></div>
@@ -146,15 +146,15 @@ export default function ListClaims() {
                         <li className="list-group-item list-group-item-action" key={index} value={index}
                           style={{ display: "inline-block" }} onClick={selectUser}>
                           {element.lastName + ", " + element.firstName}<br />
-                          {props.find(val => val.idProp == element.idProp).address}
+                          {props.find(val => val.idPropiedad == element.propiedad).direccion}
                           <p>
-                            <span key={claimPriority[element.priority].title} className="badge rounded-pill my-1"
-                              style={{ "backgroundColor": claimPriority[element.priority].color, "color": "black" }}
+                            <span key={claimPriority[element.prioridad].title} className="badge rounded-pill my-1"
+                              style={{ "backgroundColor": claimPriority[element.prioridad].color, "color": "black" }}
                               data-bs-toggle="tooltip" data-bs-html="true"
-                              title={claimPriority[element.priority].title}>
-                              {claimPriority[element.priority].title}
+                              title={claimPriority[element.prioridad].title}>
+                              {claimPriority[element.prioridad].title}
                             </span>
-                            {" " + element.descript}
+                            {" " + element.descripcion}
                             <img src="../icons/pencil.svg" onClick={editUser} name={index}
                               style={{ float: "right" }} width="20" height="20" /></p>
                         </li>
@@ -170,7 +170,7 @@ export default function ListClaims() {
           <div className="col-md-7">
             <div className="card">
               <div className="card-header">
-                <h5>{(selectedClaim.idClaim) ?
+                <h5>{(selectedClaim.propiedad) ?
                   "Editar Reclamo" : "Registrar Nuevo Reclamo"}
                 </h5>
               </div>
@@ -179,7 +179,7 @@ export default function ListClaims() {
                   <div className="row col-md-12">
                     <Form.Label className="col-md-2 my-2 alignR">Cod.Cliente:</Form.Label>
                     <div className="col-md-2">
-                      <Form.Control type="text" name="idClient" id="idClient" defaultValue={selectedClaim.idProp} onBlur={searchClientId} />
+                      <Form.Control type="text" name="clienteQueReclama" id="clienteQueReclama" defaultValue={selectedClaim.idCliente} onBlur={searchClientId} />
                     </div>
                     <div className="col-md-4">
                       <Form.Control type="text" name="lastName" id="lastName" defaultValue={selectedClaim.lastName} disabled />
@@ -189,38 +189,38 @@ export default function ListClaims() {
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">Celular:</Form.Label>
                     <div className="col-md-2">
-                      <Form.Control type="text" name="cellPhone" id="cellPhone" defaultValue={selectedClaim.idProp} disabled />
+                      <Form.Control type="text" name="cellPhone" id="cellPhone" defaultValue={selectedClaim.idCliente} disabled />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">e-mail:</Form.Label>
                     <div className="col-md-6">
-                      <Form.Control type="text" name="email" id="email" defaultValue={selectedClaim.address} disabled />
+                      <Form.Control type="text" name="email" id="email" defaultValue={selectedClaim.email} disabled />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">Propiedad:</Form.Label>
                     <div className="col-md-2">
-                      <Form.Control type="text" name="idProp" id="idProp" defaultValue={selectedClaim.idProp} disabled />
+                      <Form.Control type="text" name="propiedad" id="propiedad" defaultValue={selectedClaim.propiedad} disabled />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">Dirección:</Form.Label>
                     <div className="col-md-6">
-                      <Form.Control type="text" name="address" id="address" defaultValue={selectedClaim.address} disabled />
+                      <Form.Control type="text" name="direccion" id="direccion" defaultValue={selectedClaim.direccion} disabled />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">Descripción:</Form.Label>
                     <div className="col-md-10">
-                      <textarea className="form-control" type="text" rows="3" name="descript" defaultValue={selectedClaim.descript} />
+                      <textarea className="form-control" type="text" rows="3" name="descripcion" defaultValue={selectedClaim.descripcion} />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">Fecha:</Form.Label>
                     <div className="col-md-2">
-                      <Form.Control type="date" name="dateClaim" defaultValue={selectedClaim.dateClaim || dateClaim} />
+                      <Form.Control type="date" name="fechaDeReclamo" defaultValue={selectedClaim.fechaDeReclamo || fechaDeReclamo} />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">Celular Contacto:</Form.Label>
                     <div className="col-md-2">
-                      <Form.Control type="text" name="cellPhoneContact" defaultValue={selectedClaim.cellPhoneContact} />
+                      <Form.Control type="text" name="telefonoDeContacto" defaultValue={selectedClaim.telefonoDeContacto} />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">Prioridad:</Form.Label>
                     <div className="col-md-2">
-                      <select name="priority" className="form-select" defaultValue={selectedClaim.priority} >
-                        <option value="low">{claimPriority.low.title}</option>
-                        <option value="medium">{claimPriority.medium.title}</option>
-                        <option value="high">{claimPriority.high.title}</option>
+                      <select name="prioridad" className="form-select" defaultValue={selectedClaim.prioridad} >
+                        <option value="baja">{claimPriority.baja.title}</option>
+                        <option value="media">{claimPriority.media.title}</option>
+                        <option value="alta">{claimPriority.alta.title}</option>
                       </select>
                     </div>
                     <div className="col-md-12 mt-3 alignC">
