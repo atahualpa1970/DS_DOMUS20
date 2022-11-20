@@ -16,25 +16,23 @@ export default function ListClaims() {
   })
 
   const clearClaim = {
-    idClaim: "",
-    idClient: "",
-    lastName: "",
-    firstName: "",
-    cellPhone: "",
-    email: "",
-    idProp: "",
-    address: "",
-    descript: ""
+    idClaim: null,
+    idClient: null,
+    idProp: null,
+    priority: "",
+    descript: "",
+    fecha: "",
+    nameContact: "",
+    cellPhoneContact: "" 
   }
 
   const [selectedClaim, setSelectedClaim] = useState(clearClaim);
   const [selectedTypes, setSelectedTypes] = useState();
 
-
-  const claimType = {
-    repair: { title: "Reparación", color: "red" },
-    admin: { title: "Administrativo", color: "green" },
-    missing: { title: "Faltante", color: "yellow" }
+  const claimPriority = {
+    low: { title: "Baja", color: "yellow" },
+    medium: { title: "Media", color: "orange" },
+    high: { title: "Alta", color: "red" }
   }
 
   const selectTypes = (e) => {
@@ -61,7 +59,7 @@ export default function ListClaims() {
     else { console.log("PROP: ", prop); unselectUser() }
   }
 
-  const searchClient = (e) => {
+  const searchClientId = (e) => {
     const client = clients.find(val => val.idClient == e.target.value)
     if (client) {
       document.getElementById("lastName").value = client.lastName
@@ -74,6 +72,12 @@ export default function ListClaims() {
     else unselectUser()
   }
 
+  const searchClientName = (e) => {
+    const prop = props.find(val => val.idProp == e.target.value)
+    if (prop) document.getElementById("address").value = prop.address
+    else { console.log("PROP: ", prop); unselectUser() }
+  }
+
   const handleSubmit = (e) => {
     let max = 0
     claims.map((element) => ((element.idClaim > max) ? max = element.idClaim : null))
@@ -82,13 +86,12 @@ export default function ListClaims() {
     const newClaim = {
       idClaim: max + 1,
       idClient: inputForm.idClient.value,
-      lastName: inputForm.lastName.value,
-      firstName: inputForm.firstName.value,
-      cellPhone: inputForm.cellPhone.value,
-      email: inputForm.email.value,
       idProp: inputForm.idProp.value,
-      address: inputForm.address.value,
-      descript: inputForm.descript.value
+      priority: inputForm.priority.value,
+      descript: inputForm.descript.value,
+      dateClaim: inputForm.dateClaim.value,
+      nameContact: inputForm.nameContact.value,
+      cellPhoneContact: inputForm.cellPhoneContact.value
     }
     console.log("NEWCLAIM: ", newClaim)
     claims.push(newClaim)
@@ -96,36 +99,34 @@ export default function ListClaims() {
     unselectUser()
   }
 
+  const today = new Date()
+  const dateClaim = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
+
   return (
     <div>
       <Navigation />
       <div className="row fluid col-md-12 mx-0 my-0 py-3" id="box1">
         <h3 className="col-md-3">Gestión de Reclamos</h3>
         <div className="col-md-2">
-          <select name="selectClaimType" className="form-select" onChange={selectTypes}>
+          <select name="selectPriority" className="form-select" onChange={selectTypes}>
             <option value="">Todos los tipos...</option>
-            <option value="repair">{claimType.repair.title}</option>
-            <option value="admin">{claimType.admin.title}</option>
-            <option value="missing">{claimType.missing.title}</option>
+            <option value="low">{claimPriority.low.title}</option>
+            <option value="medium">{claimPriority.medium.title}</option>
+            <option value="high">{claimPriority.high.title}</option>
           </select>
         </div>
         <div className="col-md-1"></div>
-        <div className="col-md-2">
-          <Form.Control type="text" name="textSearch" placeholder="Realizar búsqueda..." defaultValue="" />
-        </div>
-        <div className="col-md-2">
-          <select name="selectFieldSearch" className="form-select col-md-3">
-            <option value="address">Direccion</option>
-            <option value="firstName">Nombre</option>
-            <option value="lastName">Apellido</option>
-            <option value="cellPhone">Celular</option>
-            <option value="email">e-mail</option>
-          </select>
-        </div>
-        <div className="col-md-1">
-          <button type="submit" className="btn btn-secondary">Buscar</button>
-        </div>
-
+        <form className="row fluid col-md-6" onSubmit={searchClientName}>
+          <div className="col-md-4">
+            <Form.Control type="text" name="lastNameSearch" placeholder="Apellido..." defaultValue="" />
+          </div>
+          <div className="col-md-4">
+            <Form.Control type="text" name="firstNameSearch" placeholder="Nombre..." defaultValue="" />
+          </div>
+          <div className="col-md-2">
+            <button type="submit" className="btn btn-secondary">Buscar</button>
+          </div>
+        </form>
         <hr className="my-4" />
 
         <div className="row col-md-12">
@@ -147,13 +148,13 @@ export default function ListClaims() {
                           {element.lastName + ", " + element.firstName}<br />
                           {props.find(val => val.idProp == element.idProp).address}
                           <p>
-                            <span key={claimType[element.idType].title} className="badge rounded-pill my-1"
-                              style={{ "backgroundColor": claimType[element.idType].color, "color": "black" }}
+                            <span key={claimPriority[element.priority].title} className="badge rounded-pill my-1"
+                              style={{ "backgroundColor": claimPriority[element.priority].color, "color": "black" }}
                               data-bs-toggle="tooltip" data-bs-html="true"
-                              title={claimType[element.idType].title}>
-                              {claimType[element.idType].title}
+                              title={claimPriority[element.priority].title}>
+                              {claimPriority[element.priority].title}
                             </span>
-                            {" "+element.descript}
+                            {" " + element.descript}
                             <img src="../icons/pencil.svg" onClick={editUser} name={index}
                               style={{ float: "right" }} width="20" height="20" /></p>
                         </li>
@@ -178,7 +179,7 @@ export default function ListClaims() {
                   <div className="row col-md-12">
                     <Form.Label className="col-md-2 my-2 alignR">Cod.Cliente:</Form.Label>
                     <div className="col-md-2">
-                      <Form.Control type="text" name="idClient" id="idClient" defaultValue={selectedClaim.idProp} onBlur={searchClient} />
+                      <Form.Control type="text" name="idClient" id="idClient" defaultValue={selectedClaim.idProp} onBlur={searchClientId} />
                     </div>
                     <div className="col-md-4">
                       <Form.Control type="text" name="lastName" id="lastName" defaultValue={selectedClaim.lastName} disabled />
@@ -187,12 +188,12 @@ export default function ListClaims() {
                       <Form.Control type="text" name="firstName" id="firstName" defaultValue={selectedClaim.firstName} disabled />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">Celular:</Form.Label>
-                    <div className="col-md-10">
-                      <Form.Control type="text" name="cellPhone" defaultValue={selectedClaim.cellPhone} />
+                    <div className="col-md-2">
+                      <Form.Control type="text" name="cellPhone" id="cellPhone" defaultValue={selectedClaim.idProp} disabled />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">e-mail:</Form.Label>
-                    <div className="col-md-10">
-                      <Form.Control type="text" name="email" defaultValue={selectedClaim.email} />
+                    <div className="col-md-6">
+                      <Form.Control type="text" name="email" id="email" defaultValue={selectedClaim.address} disabled />
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">Propiedad:</Form.Label>
                     <div className="col-md-2">
@@ -204,7 +205,23 @@ export default function ListClaims() {
                     </div>
                     <Form.Label className="col-md-2 my-2 alignR">Descripción:</Form.Label>
                     <div className="col-md-10">
-                      <Form.Control type="descript" name="descript" defaultValue={selectedClaim.descript} />
+                      <textarea className="form-control" type="text" rows="3" name="descript" defaultValue={selectedClaim.descript} />
+                    </div>
+                    <Form.Label className="col-md-2 my-2 alignR">Fecha:</Form.Label>
+                    <div className="col-md-2">
+                      <Form.Control type="date" name="dateClaim" defaultValue={selectedClaim.dateClaim || dateClaim} />
+                    </div>
+                    <Form.Label className="col-md-2 my-2 alignR">Celular Contacto:</Form.Label>
+                    <div className="col-md-2">
+                      <Form.Control type="text" name="cellPhoneContact" defaultValue={selectedClaim.cellPhoneContact} />
+                    </div>
+                    <Form.Label className="col-md-2 my-2 alignR">Prioridad:</Form.Label>
+                    <div className="col-md-2">
+                      <select name="priority" className="form-select" defaultValue={selectedClaim.priority} >
+                        <option value="low">{claimPriority.low.title}</option>
+                        <option value="medium">{claimPriority.medium.title}</option>
+                        <option value="high">{claimPriority.high.title}</option>
+                      </select>
                     </div>
                     <div className="col-md-12 mt-3 alignC">
                       <button type="button" className="btn btn-danger mx-3" onClick={unselectUser}>Cancelar</button>

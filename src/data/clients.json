@@ -26,7 +26,7 @@
     "clientType": "Particular",
     "lastName": "Herrera",
     "firstName": "Ricardo",
-    "dni": "380123456",
+    "dni": "38012345",
     "cuit": "20-380123456-7",
     "birthdate": "30/11/1995",
     "cellPhone": "3624-333333",
@@ -75,5 +75,16 @@
     "email": "ventas@motorepuestos2.com",
     "officeAddress": "Ruta 11 Km 1004",
     "seller": 2
+  },
+  {
+    "idClient": 130,
+    "clientType": "Particular",
+    "lastName": "Benitez",
+    "firstName": "Ricardo",
+    "dni": "38002003",
+    "cuit": "20-38002003-7",
+    "birthdate": "28/11/1990",
+    "cellPhone": "3624-433344",
+    "email": "rbenitez001@gmail.com"
   }
 ]
