@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import Navigation from '../Navigation'
 import { Form } from 'react-bootstrap'
+import SearchClientResult from './searchClientResult'
 
 const claims = require("../../data/reclamos.json")
 const props = require("../../data/propiedades.json")
@@ -24,7 +25,7 @@ export default function ListClaims() {
     direccion: "",
     prioridad: "",
     descripcion: "",
-    fecha: "",
+    fechaDeApertura: null,
     nombreDeContacto: "",
     telefonoDeContacto: ""
   }
@@ -33,6 +34,16 @@ export default function ListClaims() {
   const [selectedPriority, setSelectedPriority] = useState();
   const [clientProps, setClientProps] = useState([]);
   const [selectedProp, setSelectedProp] = useState();
+  const [searchClientResult, setSearchClientResult] = useState([]);
+  const [selectedSearchClient, setSelectedSearchClient] = useState(null);
+
+  useEffect(() => {
+    if (selectedSearchClient) {
+      searchClientId(selectedSearchClient)
+      setSearchClientResult([])
+      document.getElementById("searchClientNameForm").reset();
+    }
+  }, [selectedSearchClient])
 
   const claimPriority = {
     baja: { title: "Baja", color: "yellow" },
@@ -44,17 +55,29 @@ export default function ListClaims() {
     setSelectedPriority(e.target.value)
   }
 
+  const searchClientName = () => {
+    const lastNameSearch = document.getElementById("lastNameSearch").value
+    const firstNameSearch = document.getElementById("firstNameSearch").value
+    const result = clients.filter(val => val.apellido === lastNameSearch) // TODO reemplazar por endpoint
+    console.log("RESULT: ", result)
+    setSearchClientResult(result)
+  }
+
+
   const unselectUser = () => {
     setSelectedClaim(clearClaim)
     setClientProps([])
     setSelectedProp(null)
+    setSelectedSearchClient(null)
+    setSearchClientResult([])
+    document.getElementById("searchClientNameForm").reset();
     document.getElementById("claimForm").reset();
-    document.getElementById("propiedad").focus()
+    document.getElementById("clienteQueReclama").focus()
   }
 
   const editClaim = (e) => {
     e.target.value = parseInt(e.target.name)
-    document.getElementById("direccion").value = e.target.id;
+    setSelectedClaim(claims[e.target.id])
     searchClientId(e)
   }
 
@@ -63,7 +86,9 @@ export default function ListClaims() {
   }
 
   const searchClientId = (e) => {
-    const client = clients.find(val => val.id == e.target.value)
+    let codCli = e
+    if (e.target) codCli = e.target.value
+    const client = clients.find(val => val.id == codCli)
     if (client && client.tipoDeCliente === "Particular") {
       document.getElementById("clienteQueReclama").value = client.id
       document.getElementById("apellido").value = client.apellido
@@ -80,15 +105,10 @@ export default function ListClaims() {
       } else {
         setClientProps([])
         setSelectedProp(null)
+        setSelectedClaim(clearClaim)
       }
     }
     else unselectUser()
-  }
-
-  const searchClientName = (e) => {
-    const prop = props.find(val => val.id == e.target.value)
-    if (prop) document.getElementById("direccion").value = prop.direccion
-    else { unselectUser() }
   }
 
   const handleSubmit = (e) => {
@@ -113,7 +133,7 @@ export default function ListClaims() {
   }
 
   const today = new Date()
-  const fechaDeApertura = today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate()
+  const fechaDeApertura = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()
 
   return (
     <div>
@@ -129,17 +149,24 @@ export default function ListClaims() {
           </select>
         </div>
         <div className="col-md-1"></div>
-        <form className="row fluid col-md-6" onSubmit={searchClientName}>
+        <form className="row fluid col-md-6" id="searchClientNameForm">
           <div className="col-md-4">
-            <Form.Control type="text" name="lastNameSearch" placeholder="Apellido..." defaultValue="" />
+            <Form.Control type="text" id="lastNameSearch" placeholder="Apellido..." defaultValue="" />
           </div>
           <div className="col-md-4">
-            <Form.Control type="text" name="firstNameSearch" placeholder="Nombre..." defaultValue="" />
+            <Form.Control type="text" id="firstNameSearch" placeholder="Nombre..." defaultValue="" />
           </div>
           <div className="col-md-2">
-            <button type="submit" className="btn btn-secondary">Buscar</button>
+            <button type="button" className="btn btn-secondary"
+              onClick={searchClientName}>Buscar</button>
+          </div>
+          <div>
+            <SearchClientResult
+              clients={searchClientResult}
+              setSelectedSearchClient={setSelectedSearchClient} />
           </div>
         </form>
+
         <hr className="my-4" />
 
         <div className="row col-md-12">
@@ -154,7 +181,7 @@ export default function ListClaims() {
                 <ul className="list-group col-12">
                   {
                     claims.map((element, index) => (
-                      (element.prioridad===selectedPriority || !selectedPriority)
+                      (element.prioridad === selectedPriority || !selectedPriority)
                         ?
                         <li className="list-group-item list-group-item-action" key={index}
                           value={element.clienteQueReclama.id}
@@ -174,8 +201,6 @@ export default function ListClaims() {
                               name={element.clienteQueReclama.id}
                               style={{ float: "right" }} width="20" height="20" /></p>
                         </li>
-
-
                         : null
                     ))
                   }
@@ -238,12 +263,12 @@ export default function ListClaims() {
                     <Form.Label className="col-md-2 my-2 alignR">Fecha:</Form.Label>
                     <div className="col-md-3">
                       <Form.Control type="date" name="fechaDeApertura" id="fechaDeApertura"
-                        defaultValue={selectedClaim.fechaDeApertura || fechaDeApertura} />
+                        value={selectedClaim.fechaDeApertura || fechaDeApertura} />
                     </div>
                     <Form.Label className="col-md-4 my-2 alignR">Prioridad:</Form.Label>
                     <div className="col-md-3">
                       <select className="form-select" name="prioridad" id="prioridad"
-                        defaultValue={selectedClaim.prioridad} >
+                        value={selectedClaim.prioridad} >
                         <option value="baja">{claimPriority.baja.title}</option>
                         <option value="media">{claimPriority.media.title}</option>
                         <option value="alta">{claimPriority.alta.title}</option>

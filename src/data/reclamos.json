@@ -17,7 +17,7 @@
     "secretariaCreadora":{"id": 1},
     "prioridad": "media",
     "descripcion": "Pisos flojos",
-    "fechaDeApertura": "2022-11-05",
+    "fechaDeApertura": "2022-11-13",
     "nombreDeContacto": "",
     "telefonoDeContacto": ""
   },
@@ -28,7 +28,7 @@
     "secretariaCreadora": {"id":1},
     "prioridad": "baja",
     "descripcion": "Se cobraron intereses de más en el recibo de Octubre",
-    "fechaDeApertura": "2022-11-05",
+    "fechaDeApertura": "2022-11-14",
     "nombreDeContacto": "",
     "telefonoDeContacto": ""
   },
@@ -39,7 +39,7 @@
     "secretariaCreadora": {"id":1},  
     "prioridad": "alta",
     "descripcion": "Falla en la cerradura de entrada",
-    "fechaDeApertura": "2022-11-05",
+    "fechaDeApertura": "2022-11-19",
     "nombreDeContacto": "Garcia Marcelo",
     "telefonoDeContacto": "362-4787878"  
   }
