@@ -46,7 +46,7 @@ export default function AdminClientCorp() {
                     <div class="card">
                         <div class="card-header">
                             Documentos
-                            <img src="../icons/plus-circle.svg" style={{ float: "right" }} width="32" height="32" />
+                            <img src="../icons/plus-circle.svg" style={{ float: "right" }} width="32" height="32" alt="" />
                         </div>
                         <div class="card-body">
                             No se agregaron documentos.

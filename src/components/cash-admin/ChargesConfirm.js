@@ -63,11 +63,11 @@ export default function ChargesConfirm() {
                                 <div className="card-body row">
                                     <div className="col-md-6">
                                         Imprimir Comprobante
-                                        <img className="mx-3" src="../icons/printer.svg" width="32" height="32" />
+                                        <img className="mx-3" src="../icons/printer.svg" width="32" height="32" alt="" />
                                     </div>
                                     <div className="col-md-6">
                                         Descargar Comprobante
-                                        <img className="mx-3" src="../icons/download.svg" width="32" height="32" />
+                                        <img className="mx-3" src="../icons/download.svg" width="32" height="32" alt="" />
                                     </div>
                                 </div>
                             </div>

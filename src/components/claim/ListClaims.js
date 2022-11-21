@@ -11,11 +11,11 @@ const clienteProp = require("../../data/cliente_propiedad.json")
 export default function ListClaims() {
 
   claims.map((element) => {
-    element.direccion = props.find(val => val.id == element.propiedad.id).direccion
-    element.apellido = clients.find(val => val.id == element.clienteQueReclama.id).apellido
-    element.nombre = clients.find(val => val.id == element.clienteQueReclama.id).nombre
-    element.nroCelular = clients.find(val => val.id == element.clienteQueReclama.id).nroCelular
-    element.email = clients.find(val => val.id == element.clienteQueReclama.id).email
+    element.direccion = props.find(val => val.id === element.propiedad.id).direccion
+    element.apellido = clients.find(val => val.id === element.clienteQueReclama.id).apellido
+    element.nombre = clients.find(val => val.id === element.clienteQueReclama.id).nombre
+    element.nroCelular = clients.find(val => val.id === element.clienteQueReclama.id).nroCelular
+    element.email = clients.find(val => val.id === element.clienteQueReclama.id).email
   })
 
   const clearClaim = {
@@ -57,7 +57,7 @@ export default function ListClaims() {
 
   const searchClientName = () => {
     const lastNameSearch = document.getElementById("lastNameSearch").value
-    const firstNameSearch = document.getElementById("firstNameSearch").value
+    //const firstNameSearch = document.getElementById("firstNameSearch").value
     const result = clients.filter(val => val.apellido === lastNameSearch) // TODO reemplazar por endpoint
     console.log("RESULT: ", result)
     setSearchClientResult(result)
@@ -88,7 +88,7 @@ export default function ListClaims() {
   const searchClientId = (e) => {
     let codCli = e
     if (e.target) codCli = e.target.value
-    const client = clients.find(val => val.id == codCli)
+    const client = clients.find(val => val.id === codCli)
     if (client && client.tipoDeCliente === "Particular") {
       document.getElementById("clienteQueReclama").value = client.id
       document.getElementById("apellido").value = client.apellido
@@ -175,7 +175,7 @@ export default function ListClaims() {
               <div className="card-header">
                 <h5 style={{ display: "inline-block" }}>Reclamos registrados</h5>
                 <img src="../icons/plus-circle.svg" style={{ float: "right" }}
-                  onClick={unselectUser} width="32" height="32" />
+                  onClick={unselectUser} width="32" height="32" alt="" />
               </div>
               <div className="card-body">
                 <ul className="list-group col-12">
@@ -187,7 +187,7 @@ export default function ListClaims() {
                           value={element.clienteQueReclama.id}
                           style={{ display: "inline-block" }} >
                           {element.apellido + ", " + element.nombre}<br />
-                          {props.find(val => val.id == element.propiedad.id).direccion}
+                          {props.find(val => val.id === element.propiedad.id).direccion}
                           <p>
                             <span key={claimPriority[element.prioridad].title} className="badge rounded-pill my-1"
                               style={{ "backgroundColor": claimPriority[element.prioridad].color, "color": "black" }}
@@ -199,7 +199,7 @@ export default function ListClaims() {
                             <img src="../icons/pencil.svg" onClick={editClaim}
                               id={index}
                               name={element.clienteQueReclama.id}
-                              style={{ float: "right" }} width="20" height="20" /></p>
+                              style={{ float: "right" }} width="20" height="20" alt="" /></p>
                         </li>
                         : null
                     ))
