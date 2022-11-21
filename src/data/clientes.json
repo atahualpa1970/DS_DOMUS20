@@ -1,6 +1,6 @@
 [
   {
-    "idCliente": 123,
+    "id": 123,
     "tipoDeCliente": "Particular",
     "apellido": "Benitez",
     "nombre": "Marta",
@@ -11,7 +11,7 @@
     "email": "mbenitez001@gmail.com"
   },
   {
-    "idCliente": 124,
+    "id": 124,
     "tipoDeCliente": "Particular",
     "apellido": "Gutierrez",
     "nombre": "Sergio",
@@ -22,7 +22,7 @@
     "email": "sgutierrez001@gmail.com"
   },
   {
-    "idCliente": 125,
+    "id": 125,
     "tipoDeCliente": "Particular",
     "apellido": "Herrera",
     "nombre": "Ricardo",
@@ -33,7 +33,7 @@
     "email": "rherrera001@gmail.com"
   },
   {
-    "idCliente": 126,
+    "id": 126,
     "tipoDeCliente": "Corporativo",
     "companyName": "Super Autos",
     "owners": "Claudio Fernandez, Horacio Perez",
@@ -44,7 +44,7 @@
     "seller": 2
   },
   {
-    "idCliente": 127,
+    "id": 127,
     "tipoDeCliente": "Particular",
     "apellido": "Garcia",
     "nombre": "Liliana",
@@ -55,7 +55,7 @@
     "email": "lgarcia005@gmail.com"
   },
   {
-    "idCliente": 128,
+    "id": 128,
     "tipoDeCliente": "Particular",
     "apellido": "Aguirre",
     "nombre": "Pedro Luis",
@@ -66,7 +66,7 @@
     "email": "plaguirre001@gmail.com"
   },
   {
-    "idCliente": 129,
+    "id": 129,
     "tipoDeCliente": "Corporativo",
     "companyName": "Motorepuestos 2",
     "owners": "Juana Suarez, Miguel Medina",
@@ -77,7 +77,7 @@
     "seller": 2
   },
   {
-    "idCliente": 130,
+    "id": 130,
     "tipoDeCliente": "Particular",
     "apellido": "Benitez",
     "nombre": "Ricardo",

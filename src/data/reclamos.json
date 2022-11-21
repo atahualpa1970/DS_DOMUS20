@@ -1,9 +1,9 @@
 [
   {
     "id": 1,
-    "propiedad": 1,
-    "clienteQueReclama": 123,
-    "secretariaCreadora": 1,
+    "propiedad": {"id":1},
+    "clienteQueReclama": {"id":123},
+    "secretariaCreadora": {"id":1},
     "prioridad": "alta",
     "descripcion": "Humedad en el techo del baño",
     "fechaDeApertura": "2022-11-05",
@@ -12,9 +12,9 @@
   },
   {
     "id": 2,
-    "propiedad": 2,
-    "clienteQueReclama": 124,
-    "secretariaCreadora": 1,
+    "propiedad": {"id":2},
+    "clienteQueReclama": {"id":124},
+    "secretariaCreadora":{"id": 1},
     "prioridad": "media",
     "descripcion": "Pisos flojos",
     "fechaDeApertura": "2022-11-05",
@@ -23,9 +23,9 @@
   },
   {
     "id": 3,
-    "propiedad": 3,
-    "clienteQueReclama": 125,
-    "secretariaCreadora": 1,
+    "propiedad": {"id":3},
+    "clienteQueReclama": {"id":125},
+    "secretariaCreadora": {"id":1},
     "prioridad": "baja",
     "descripcion": "Se cobraron intereses de más en el recibo de Octubre",
     "fechaDeApertura": "2022-11-05",
@@ -33,10 +33,10 @@
     "telefonoDeContacto": ""
   },
   {
-    "id": 3,
-    "propiedad": 5,
-    "clienteQueReclama": 127,
-    "secretariaCreadora": 1,  
+    "id": 4,
+    "propiedad": {"id":5},
+    "clienteQueReclama": {"id":127},
+    "secretariaCreadora": {"id":1},  
     "prioridad": "alta",
     "descripcion": "Falla en la cerradura de entrada",
     "fechaDeApertura": "2022-11-05",

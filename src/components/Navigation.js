@@ -36,7 +36,6 @@ export default function Navigation() {
         <img src="../domus20-1.png" alt="" width="100" height="50" />
       </Link>
       <h2 className="navTitle">Inmobiliaria Domus</h2>
-      {console.log("LOGUSER: ", loggedUser)}
       <button className="navbar-toggler" type="button"
         data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
