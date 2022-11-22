@@ -35,8 +35,8 @@
   {
     "id": 126,
     "tipoDeCliente": "Corporativo",
-    "companyName": "Super Autos",
-    "owners": "Claudio Fernandez, Horacio Perez",
+    "nombreEmpresa": "Super Autos",
+    "propietarios": "Claudio Fernandez, Horacio Perez",
     "cuit": "33-98050506-1",
     "nroDeTelefono": "3624-444444",
     "email": "ventas@superautos.com",
@@ -68,8 +68,8 @@
   {
     "id": 129,
     "tipoDeCliente": "Corporativo",
-    "companyName": "Motorepuestos 2",
-    "owners": "Juana Suarez, Miguel Medina",
+    "nombreEmpresa": "Motorepuestos 2",
+    "propietarios": "Juana Suarez, Miguel Medina",
     "cuit": "33-98060708-2",
     "nroDeTelefono": "3624-777777",
     "email": "ventas@motorepuestos2.com",

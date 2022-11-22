@@ -3,21 +3,14 @@ import Navigation from '../Navigation'
 import { Form } from 'react-bootstrap'
 import SearchClientResult from './searchClientResult'
 
-const claims = require("../../data/reclamos.json")
-const props = require("../../data/propiedades.json")
-const clients = require("../../data/clientes.json")
-const clienteProp = require("../../data/cliente_propiedad.json")
+//const claims = require("../../data/reclamos.json")
+
 
 export default function ListClaims() {
 
-  claims.map((element) => {
-    element.direccion = props.find(val => val.id === element.propiedad.id).direccion
-    element.apellido = clients.find(val => val.id === element.clienteQueReclama.id).apellido
-    element.nombre = clients.find(val => val.id === element.clienteQueReclama.id).nombre
-    element.nroCelular = clients.find(val => val.id === element.clienteQueReclama.id).nroCelular
-    element.email = clients.find(val => val.id === element.clienteQueReclama.id).email
-  })
-
+  // const props = require("../../data/propiedades.json")
+  // const clients = require("../../data/clientes.json")
+  // const clienteProp = require("../../data/cliente_propiedad.json")
   const clearClaim = {
     propiedad: { id: null },
     clienteQueReclama: { id: null },
@@ -31,11 +24,57 @@ export default function ListClaims() {
   }
 
   const [selectedClaim, setSelectedClaim] = useState(clearClaim);
-  const [selectedPriority, setSelectedPriority] = useState();
+  const [filterPriority, setFilterPriority] = useState("");
   const [clientProps, setClientProps] = useState([]);
-  const [selectedProp, setSelectedProp] = useState();
+  const [selectedProp, setSelectedProp] = useState("");
+  const [selectedPriority, setSelectedPriority] = useState("");
   const [searchClientResult, setSearchClientResult] = useState([]);
   const [selectedSearchClient, setSelectedSearchClient] = useState(null);
+  const [claims, setClaims] = useState([]);
+  const [client, setClient] = useState([]);
+
+  const URL_getAllClaims = 'http://localhost:4000/api/reclamos/all'
+  const URL_getClientId = 'http://localhost:4000/api/clientes/withProps/'
+  const URL_searchClient = 'http://localhost:4000/api/clientes/search/'
+
+  const getClaims = () => {
+    fetch(URL_getAllClaims)
+      .then(response => response.json())
+      .then(data => {
+        setClaims(data)
+      })
+  };
+
+  const getClientProps = (id) => {
+    fetch(URL_getClientId + id)
+      .then(response => response.json())
+      .then(data => {
+        setClient(data)
+      })
+  };
+
+  const searchClientName = () => {
+    let lastNameSearch = document.getElementById("lastNameSearch").value
+    let firstNameSearch = document.getElementById("firstNameSearch").value
+    if (lastNameSearch || firstNameSearch) {
+      let data = []
+      if (lastNameSearch) data.push({ apellido: lastNameSearch })
+      if (firstNameSearch) data.push({ nombre: firstNameSearch })
+      fetch(URL_searchClient + JSON.stringify(data))
+        .then(response => response.json())
+        .then(data => {
+          setSearchClientResult(data)
+        })
+    }
+  };
+
+  useEffect(() => {
+    getClaims()
+  }, [])
+
+  useEffect(() => {
+    renderClientId()
+  }, [client])
 
   useEffect(() => {
     if (selectedSearchClient) {
@@ -52,24 +91,16 @@ export default function ListClaims() {
   }
 
   const selectPriority = (e) => {
-    setSelectedPriority(e.target.value)
+    setFilterPriority(e.target.value)
   }
-
-  const searchClientName = () => {
-    const lastNameSearch = document.getElementById("lastNameSearch").value
-    //const firstNameSearch = document.getElementById("firstNameSearch").value
-    const result = clients.filter(val => val.apellido === lastNameSearch) // TODO reemplazar por endpoint
-    console.log("RESULT: ", result)
-    setSearchClientResult(result)
-  }
-
 
   const unselectUser = () => {
     setSelectedClaim(clearClaim)
     setClientProps([])
-    setSelectedProp(null)
-    setSelectedSearchClient(null)
+    setSelectedProp("")
+    setSelectedSearchClient("")
     setSearchClientResult([])
+    setSelectedPriority("")
     document.getElementById("searchClientNameForm").reset();
     document.getElementById("claimForm").reset();
     document.getElementById("clienteQueReclama").focus()
@@ -78,6 +109,7 @@ export default function ListClaims() {
   const editClaim = (e) => {
     e.target.value = parseInt(e.target.name)
     setSelectedClaim(claims[e.target.id])
+    setSelectedPriority(claims[e.target.id].prioridad)
     searchClientId(e)
   }
 
@@ -85,31 +117,44 @@ export default function ListClaims() {
     document.getElementById("propiedad").value = e.target.value
   }
 
+  const handlePriority = (e) => {
+    setSelectedPriority(e.target.value)
+  }
+
   const searchClientId = (e) => {
-    let codCli = e
-    if (e.target) codCli = e.target.value
-    const client = clients.find(val => val.id === codCli)
-    if (client && client.tipoDeCliente === "Particular") {
-      document.getElementById("clienteQueReclama").value = client.id
-      document.getElementById("apellido").value = client.apellido
-      document.getElementById("nombre").value = client.nombre
-      document.getElementById("nroCelular").value = client.nroCelular
-      document.getElementById("email").value = client.email
-      const relPropCli = clienteProp.filter(val => val.idCliente === client.id)
-      relPropCli.forEach(element =>
-        element.direccion = props.find(val => val.id === element.idPropiedad).direccion)
-      if (relPropCli.length > 0) {
-        setClientProps(relPropCli)
-        setSelectedProp(relPropCli[0].idPropiedad)
-        document.getElementById("propiedad").value = relPropCli[0].idPropiedad
+    let codCli = null
+    if (e.target && e.target.value !== "") codCli = e.target.value
+    if (!e.target) codCli = e
+    if (codCli !== null) getClientProps(codCli)
+  }
+
+  const renderClientId = () => {
+    if (client.length > 0) {
+      if (client[0].tipoDeCliente === "Particular") {
+        document.getElementById("apellido").value = client[0].apellido
+        document.getElementById("nombre").value = client[0].nombre
+        document.getElementById("nroCelular").value = client[0].nroCelular
+      }
+      if (client[0].tipoDeCliente === "Corporativo") {
+        document.getElementById("apellido").value = client[0].nombreEmpresa
+        document.getElementById("nombre").value = client[0].cuit
+        document.getElementById("nroCelular").value = client[0].nroDeTelefono
+      }
+      document.getElementById("clienteQueReclama").value = client[0].id
+      document.getElementById("email").value = client[0].email
+
+      if (client[0].propiedades.length > 0) {
+        setClientProps(client[0].propiedades)
+        setSelectedProp(client[0].propiedades[0].id)
+        document.getElementById("propiedad").value = client[0].propiedades[0].id
       } else {
         setClientProps([])
         setSelectedProp(null)
         setSelectedClaim(clearClaim)
       }
-    }
-    else unselectUser()
+    } else unselectUser()
   }
+
 
   const handleSubmit = (e) => {
     let max = 0
@@ -117,9 +162,10 @@ export default function ListClaims() {
     const inputForm = e.target.form.elements
     console.log("EVENT: ", inputForm)
     const newClaim = {
-      propiedad: { id: max + 1 },
-      clienteQueReclama: { id: inputForm.clienteQueReclama.value },
-      secretariaCreadora: { id: inputForm.secretariaCreadora.value },
+      id: max + 1,
+      propiedad: { id: parseInt(inputForm.propiedad.value) },
+      clienteQueReclama: { id: parseInt(inputForm.clienteQueReclama.value) },
+      secretariaCreadora: { id: 1 },
       prioridad: inputForm.prioridad.value,
       descripcion: inputForm.descripcion.value,
       fechaDeApertura: inputForm.fechaDeApertura.value,
@@ -127,7 +173,8 @@ export default function ListClaims() {
       telefonoDeContacto: inputForm.telefonoDeContacto.value
     }
     console.log("NEWCLAIM: ", newClaim)
-    claims.push(newClaim)
+
+    //claims.push(newClaim)
     console.log("RECLAMOS: ", claims)
     unselectUser()
   }
@@ -181,13 +228,13 @@ export default function ListClaims() {
                 <ul className="list-group col-12">
                   {
                     claims.map((element, index) => (
-                      (element.prioridad === selectedPriority || !selectedPriority)
+                      (element.prioridad === filterPriority || !filterPriority)
                         ?
                         <li className="list-group-item list-group-item-action" key={index}
-                          value={element.clienteQueReclama.id}
+                          defaultValue={element.clienteQueReclama.id}
                           style={{ display: "inline-block" }} >
-                          {element.apellido + ", " + element.nombre}<br />
-                          {props.find(val => val.id === element.propiedad.id).direccion}
+                          {element.clienteQueReclama.apellido + ", " + element.clienteQueReclama.nombre}<br />
+                          {element.propiedad.direccion}
                           <p>
                             <span key={claimPriority[element.prioridad].title} className="badge rounded-pill my-1"
                               style={{ "backgroundColor": claimPriority[element.prioridad].color, "color": "black" }}
@@ -250,8 +297,8 @@ export default function ListClaims() {
                     <div className="col-md-6">
                       <select className="form-select" name="direccion" id="direccion"
                         onChange={searchIdProp} value={selectedProp}>
-                        {clientProps.map((element) =>
-                          <option value={element.idPropiedad} >{element.direccion}</option>
+                        {clientProps.map((element, index) =>
+                          <option key={index} value={element.idPropiedad} >{element.direccion}</option>
                         )}
                       </select>
                     </div>
@@ -263,12 +310,12 @@ export default function ListClaims() {
                     <Form.Label className="col-md-2 my-2 alignR">Fecha:</Form.Label>
                     <div className="col-md-3">
                       <Form.Control type="date" name="fechaDeApertura" id="fechaDeApertura"
-                        value={selectedClaim.fechaDeApertura || fechaDeApertura} />
+                        defaultValue={selectedClaim.fechaDeApertura || fechaDeApertura} />
                     </div>
                     <Form.Label className="col-md-4 my-2 alignR">Prioridad:</Form.Label>
                     <div className="col-md-3">
                       <select className="form-select" name="prioridad" id="prioridad"
-                        value={selectedClaim.prioridad} >
+                        onChange={handlePriority} value={selectedPriority} >
                         <option value="baja">{claimPriority.baja.title}</option>
                         <option value="media">{claimPriority.media.title}</option>
                         <option value="alta">{claimPriority.alta.title}</option>

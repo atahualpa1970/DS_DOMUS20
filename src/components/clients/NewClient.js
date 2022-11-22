@@ -15,6 +15,7 @@ export default function NewClient() {
         switch (selectedClientType) {
             case "particular": return <NewClientPart />;
             case "corporativo": return <NewClientCorp />;
+            default:
         }
     }
 
