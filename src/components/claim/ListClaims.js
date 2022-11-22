@@ -36,22 +36,44 @@ export default function ListClaims() {
   const URL_getAllClaims = 'http://localhost:4000/api/reclamos/all'
   const URL_getClientId = 'http://localhost:4000/api/clientes/withProps/'
   const URL_searchClient = 'http://localhost:4000/api/clientes/search/'
+  const URL_createClaim = 'http://localhost:4000/api/reclamos/'
+  const URL_updateClaim = 'http://localhost:4000/api/reclamos/idClaim/'
 
   const getClaims = () => {
     fetch(URL_getAllClaims)
       .then(response => response.json())
-      .then(data => {
-        setClaims(data)
-      })
+      .then(data => { setClaims(data) })
   };
 
   const getClientProps = (id) => {
     fetch(URL_getClientId + id)
       .then(response => response.json())
-      .then(data => {
-        setClient(data)
-      })
+      .then(data => { setClient(data) })
   };
+
+  const addClaim = (newClaim) => {
+    fetch(URL_createClaim, {
+      method: "POST",
+      body: JSON.stringify(newClaim),
+      headers: { "Content-type": "application/json; charset=UTF-8" }
+    })
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .then(getClaims)
+      .catch(err => console.log(err))
+  }
+
+  const updateClaim = (newClaim) => {
+    fetch(URL_updateClaim + newClaim.id, {
+      method: "PUT",
+      body: JSON.stringify(newClaim),
+      headers: { "Content-type": "application/json; charset=UTF-8" }
+    })
+      .then(response => response.json())
+      .then(json => console.log(json))
+      .then(getClaims)
+      .catch(err => console.log(err))
+  }
 
   const searchClientName = () => {
     let lastNameSearch = document.getElementById("lastNameSearch").value
@@ -149,20 +171,15 @@ export default function ListClaims() {
         document.getElementById("propiedad").value = client[0].propiedades[0].id
       } else {
         setClientProps([])
-        setSelectedProp(null)
+        setSelectedProp("")
         setSelectedClaim(clearClaim)
       }
     } else unselectUser()
   }
 
-
   const handleSubmit = (e) => {
-    let max = 0
-    claims.map((element) => ((element.propiedad.id > max) ? max = element.propiedad.id : null))
     const inputForm = e.target.form.elements
-    console.log("EVENT: ", inputForm)
     const newClaim = {
-      id: max + 1,
       propiedad: { id: parseInt(inputForm.propiedad.value) },
       clienteQueReclama: { id: parseInt(inputForm.clienteQueReclama.value) },
       secretariaCreadora: { id: 1 },
@@ -172,10 +189,18 @@ export default function ListClaims() {
       nombreDeContacto: inputForm.nombreDeContacto.value,
       telefonoDeContacto: inputForm.telefonoDeContacto.value
     }
+    let idClaim = undefined
+    if (selectedClaim.id) idClaim = selectedClaim.id
+    if (!idClaim) {
+      let max = 0
+      claims.map((element) => ((element.id > max) ? max = element.id : null))
+      newClaim.id = max + 1
+      addClaim(newClaim)
+    } else {
+      newClaim.id = idClaim
+      updateClaim(newClaim)
+    }
     console.log("NEWCLAIM: ", newClaim)
-
-    //claims.push(newClaim)
-    console.log("RECLAMOS: ", claims)
     unselectUser()
   }
 
@@ -244,7 +269,7 @@ export default function ListClaims() {
                             </span>
                             {" " + element.descripcion}
                             <img src="../icons/pencil.svg" onClick={editClaim}
-                              id={index}
+                              id={index} idclaim={element.id}
                               name={element.clienteQueReclama.id}
                               style={{ float: "right" }} width="20" height="20" alt="" /></p>
                         </li>
@@ -258,7 +283,7 @@ export default function ListClaims() {
           <div className="col-md-7">
             <div className="card">
               <div className="card-header">
-                <h5>{(selectedClaim.propiedad.id) ?
+                <h5>{(selectedClaim.id) ?
                   "Editar Reclamo" : "Registrar Nuevo Reclamo"}
                 </h5>
               </div>
