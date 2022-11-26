@@ -34,19 +34,12 @@ export default function ListClaims() {
   const [claims, setClaims] = useState([]);
   const [client, setClient] = useState([]);
 
-  var URL_getAllClaims = 'http://localhost:4000/api/reclamos/all'
-  var URL_getClientId = 'http://localhost:4000/api/clientes/withProps/'
-  var URL_searchClient = 'http://localhost:4000/api/clientes/search/'
-  var URL_createClaim = 'http://localhost:4000/api/reclamos/'
-  var URL_updateClaim = 'http://localhost:4000/api/reclamos/idClaim/'
+  const URL_getAllClaims = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
+  const URL_getClientId = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/clientes/'
+  const URL_searchClient = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
+  const URL_createClaim = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
+  const URL_updateClaim = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
 
-  if (process.env.REACT_APP_LOCAL_BD !== 'true') {
-    URL_getAllClaims = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
-    URL_getClientId = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/clientes/'
-    URL_searchClient = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
-    URL_createClaim = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
-    URL_updateClaim = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
-  }
 
   const getClaims = () => {
     fetch(URL_getAllClaims, {
@@ -229,9 +222,9 @@ export default function ListClaims() {
   function saveOk() {
     return (
       <div>
-          <Alert key='primary' variant='primary'>
-            Registro guardado
-          </Alert>
+        <Alert key='primary' variant='primary'>
+          Registro guardado
+        </Alert>
       </div>
     );
   }
@@ -290,9 +283,9 @@ export default function ListClaims() {
                         <li className="list-group-item list-group-item-action" key={index}
                           defaultValue={element.clienteQueReclama.id}
                           style={{ display: "inline-block" }} >
-                          { (element.clienteQueReclama.tipoDeCliente === "Particular")
+                          {(element.clienteQueReclama.tipoDeCliente === "Particular")
                             ? element.clienteQueReclama.apellido + ", " + element.clienteQueReclama.nombre
-                            : element.clienteQueReclama.nombreEmpresa + " ("+element.nombreDeContacto+")" }
+                            : element.clienteQueReclama.nombreEmpresa + " (" + element.nombreDeContacto + ")"}
                           <br />{element.propiedad.direccion}
                           <p>
                             <span key={claimPriority[element.prioridad].title} className="badge rounded-pill my-1"
