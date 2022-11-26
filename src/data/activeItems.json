@@ -96,7 +96,7 @@
         "newProp": "",
         "adminProps": "",
         "listProps": "",
-        "caja": " d-none",
+        "caja": "",
         "charges": " d-none",
         "inputsOutputs": " d-none",
         "cashClosing": " d-none",
@@ -111,7 +111,7 @@
         "adminClients": "",
         "listClients": "",
         "debtorClients": "",
-        "listClaims": " d-none",
+        "listClaims": "",
         "listUsers": " d-none"
     },
     "cashier":{

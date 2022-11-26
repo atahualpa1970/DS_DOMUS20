@@ -16,7 +16,7 @@
         "changeStatusDate": ""
     },
     "secretary":{
-        "changeDate": "",
+        "changeDate": " d-none",
         "changeStatusDate": " d-none"
     },
     "cashier":{

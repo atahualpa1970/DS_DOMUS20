@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Navigation from '../Navigation'
 import { Form } from 'react-bootstrap'
 import SearchClientResult from './searchClientResult'
+import Alert from 'react-bootstrap/Alert'
 
 //const claims = require("../../data/reclamos.json")
 
@@ -33,22 +34,20 @@ export default function ListClaims() {
   const [claims, setClaims] = useState([]);
   const [client, setClient] = useState([]);
 
-  //const URL_getAllClaims = 'http://localhost:4000/api/reclamos/all'
-  //const URL_getClientId = 'http://localhost:4000/api/clientes/withProps/'
-  //const URL_searchClient = 'http://localhost:4000/api/clientes/search/'
-  //const URL_createClaim = 'http://localhost:4000/api/reclamos/'
-  //const URL_updateClaim = 'http://localhost:4000/api/reclamos/idClaim/'
+  var URL_getAllClaims = 'http://localhost:4000/api/reclamos/all'
+  var URL_getClientId = 'http://localhost:4000/api/clientes/withProps/'
+  var URL_searchClient = 'http://localhost:4000/api/clientes/search/'
+  var URL_createClaim = 'http://localhost:4000/api/reclamos/'
+  var URL_updateClaim = 'http://localhost:4000/api/reclamos/idClaim/'
 
-  //const URL_getAllClaims = 'https://api-domus20.herokuapp.com/api/reclamos/'
-  //const cors = 'https://cors-anywhere.herokuapp.com/corsdemo/'
-  
-  const URL_getAllClaims = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
-  const URL_getClientId = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/clientes/'
-  const URL_searchClient = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
-  const URL_createClaim = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
-  const URL_updateClaim = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
-  
-  
+  if (process.env.REACT_APP_LOCAL_BD !== 'true') {
+    URL_getAllClaims = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
+    URL_getClientId = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/clientes/'
+    URL_searchClient = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
+    URL_createClaim = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
+    URL_updateClaim = 'https://dds-2022-tpi-backend-domus-git-gdbudzovsky-dev.apps.sandbox.x8i5.p1.openshiftapps.com/reclamos/'
+  }
+
   const getClaims = () => {
     fetch(URL_getAllClaims, {
       mode: "cors"
@@ -62,14 +61,14 @@ export default function ListClaims() {
   };
 
   const getClientProps = (id) => {
-    fetch(URL_getClientId + id,{
+    fetch(URL_getClientId + id, {
       mode: "cors"
     })
       .then(response => response.json())
-      .then(data => { 
+      .then(data => {
         setClient(data)
         console.log("DATA: ", data)
-       })
+      })
   };
 
   const addClaim = (newClaim) => {
@@ -80,6 +79,7 @@ export default function ListClaims() {
     })
       .then(response => response.json())
       .then(json => console.log(json))
+      .then(setTimeout(saveOk(), 2000))
       .then(getClaims)
       .catch(err => console.log(err))
   }
@@ -92,6 +92,7 @@ export default function ListClaims() {
     })
       .then(response => response.json())
       .then(json => console.log(json))
+      .then(setTimeout(saveOk(), 2000))
       .then(getClaims)
       .catch(err => console.log(err))
   }
@@ -225,6 +226,16 @@ export default function ListClaims() {
     unselectUser()
   }
 
+  function saveOk() {
+    return (
+      <div>
+          <Alert key='primary' variant='primary'>
+            Registro guardado
+          </Alert>
+      </div>
+    );
+  }
+
   const today = new Date()
   const fechaDeApertura = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate()
 
@@ -279,8 +290,10 @@ export default function ListClaims() {
                         <li className="list-group-item list-group-item-action" key={index}
                           defaultValue={element.clienteQueReclama.id}
                           style={{ display: "inline-block" }} >
-                          {element.clienteQueReclama.apellido + ", " + element.clienteQueReclama.nombre}<br />
-                          {element.propiedad.direccion}
+                          { (element.clienteQueReclama.tipoDeCliente === "Particular")
+                            ? element.clienteQueReclama.apellido + ", " + element.clienteQueReclama.nombre
+                            : element.clienteQueReclama.nombreEmpresa + " ("+element.nombreDeContacto+")" }
+                          <br />{element.propiedad.direccion}
                           <p>
                             <span key={claimPriority[element.prioridad].title} className="badge rounded-pill my-1"
                               style={{ "backgroundColor": claimPriority[element.prioridad].color, "color": "black" }}
